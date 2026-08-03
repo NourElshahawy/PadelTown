@@ -13,13 +13,13 @@ const AMENITIES = [
 export default function AddVenueForm({ ownerId, onCreated }) {
   const [open, setOpen] = useState(false);
   const [venue, setVenue] = useState({ name: "", address: "", phone: "", email: "", description: "", amenities: [] });
-  const [courts, setCourts] = useState([{ name: "", type: "regular", price: "" }]);
+  const [courts, setCourts] = useState([{ name: "", type: "regular", sportType: "padel", price: "" }]);
   const [submitting, setSubmitting] = useState(false);
 
   const toggleAmenity = (value) => setVenue((v) => ({ ...v, amenities: v.amenities.includes(value) ? v.amenities.filter((a) => a !== value) : [...v.amenities, value] }));
 
   const updateCourt = (i, patch) => setCourts((cs) => cs.map((c, idx) => (idx === i ? { ...c, ...patch } : c)));
-  const addCourtRow = () => setCourts((cs) => [...cs, { name: "", type: "regular", price: "" }]);
+  const addCourtRow = () => setCourts((cs) => [...cs, { name: "", type: "regular", sportType: "padel", price: "" }]);
   const removeCourtRow = (i) => setCourts((cs) => cs.filter((_, idx) => idx !== i));
 
   const canSubmit = venue.name.trim() && venue.phone.trim() && courts.every((c) => c.name.trim() && c.price);
@@ -33,7 +33,7 @@ export default function AddVenueForm({ ownerId, onCreated }) {
       alert("تم إرسال ملعبك الجديد للمراجعة، هيظهر بعد موافقة الإدارة.");
       setOpen(false);
       setVenue({ name: "", address: "", phone: "", email: "", description: "", amenities: [] });
-      setCourts([{ name: "", type: "regular", price: "" }]);
+      setCourts([{ name: "", type: "regular", sportType: "padel", price: "" }]);
       onCreated?.();
     } catch {
       alert("حصل خطأ أثناء إضافة الملعب");
@@ -95,6 +95,13 @@ export default function AddVenueForm({ ownerId, onCreated }) {
                 <input className="field-input" placeholder="اسم الملعب" value={c.name} onChange={(e) => updateCourt(i, { name: e.target.value })} required />
               </div>
               <div className="col-md-6">
+                <select className="field-input" value={c.sportType || "padel"} onChange={(e) => updateCourt(i, { sportType: e.target.value })}>
+                  <option value="padel">بادل</option>
+                  <option value="football">كورة قدم</option>
+                  <option value="tennis">تنس</option>
+                </select>
+              </div>
+              <div className="col-md-6">
                 <select className="field-input" value={c.type} onChange={(e) => updateCourt(i, { type: e.target.value })}>
                   <option value="regular">عادي</option>
                   <option value="panoramic">بانوراما</option>
@@ -102,7 +109,7 @@ export default function AddVenueForm({ ownerId, onCreated }) {
                   <option value="outdoor">مكشوف</option>
                 </select>
               </div>
-              <div className="col-md-6">
+              <div className="col-12">
                 <input className="field-input" type="number" placeholder="السعر/ساعة" value={c.price} onChange={(e) => updateCourt(i, { price: e.target.value })} required />
               </div>
             </div>
