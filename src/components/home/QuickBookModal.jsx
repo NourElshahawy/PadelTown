@@ -8,7 +8,7 @@ import { createBookingWithDeposit } from "@/services/depositBookingClient";
 
 const INSTAPAY_NUMBER = "01065801252";
 
-export default function QuickBookModal({ slots, onClose }) {
+export default function QuickBookModal({ slots, sportType = "all", onClose }) {
   useLockBodyScroll(true);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -27,14 +27,14 @@ export default function QuickBookModal({ slots, onClose }) {
 
   useEffect(() => {
     let active = true;
-    getAvailableCourtsForSlots(slots)
+    getAvailableCourtsForSlots(slots, sportType)
       .then((data) => active && setCourts(data))
       .catch(() => active && setError("حصل خطأ أثناء البحث"))
       .finally(() => active && setLoading(false));
     return () => {
       active = false;
     };
-  }, [slots]);
+  }, [slots, sportType]);
 
   useEffect(() => {
     if (!proofFile) {
@@ -198,7 +198,10 @@ export default function QuickBookModal({ slots, onClose }) {
             {courts.map((c) => (
               <div key={c.courtId} className="quick-book-row">
                 <div>
-                  <b>{c.venueName}</b>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <b>{c.venueName}</b>
+                    {c.sportTypeLabel && <span className="quick-book-sport-badge">{c.sportTypeLabel}</span>}
+                  </div>
                   <div style={{ fontSize: ".8rem", color: "var(--text-muted)" }}>{c.courtName}</div>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>

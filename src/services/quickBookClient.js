@@ -1,21 +1,27 @@
 "use client";
 import { createClient } from "@/lib/supabase/client";
 
-export async function getAvailableCourtsForSlots(slots) {
+const SPORT_LABELS = { padel: "بادل", football: "كورة قدم", tennis: "تنس" };
+
+export async function getAvailableCourtsForSlots(slots, sportType = "all") {
   const supabase = createClient();
 
-  const { data: venues, error } = await supabase.from("venues").select("id, name, address, courts(id, name, price_per_hour, images)").eq("status", "approved");
+  const { data: venues, error } = await supabase.from("venues").select("id, name, address, courts(id, name, sport_type, price_per_hour, images)").eq("status", "approved");
   if (error) throw error;
 
   const allCourts = venues.flatMap((v) =>
-    (v.courts || []).map((c) => ({
-      courtId: c.id,
-      courtName: c.name,
-      venueName: v.name,
-      venueId: v.id,
-      pricePerHour: c.price_per_hour,
-      image: c.images?.[0] || "/assets/imgs/courts-bg.png",
-    })),
+    (v.courts || [])
+      .filter((c) => sportType === "all" || c.sport_type === sportType)
+      .map((c) => ({
+        courtId: c.id,
+        courtName: c.name,
+        venueName: v.name,
+        venueId: v.id,
+        pricePerHour: c.price_per_hour,
+        image: c.images?.[0] || "/assets/imgs/courts-bg.png",
+        sportType: c.sport_type || "padel",
+        sportTypeLabel: SPORT_LABELS[c.sport_type] || SPORT_LABELS.padel,
+      })),
   );
 
   if (allCourts.length === 0) return [];

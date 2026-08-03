@@ -19,10 +19,18 @@ const ROTATED_SLOTS = [...SLOTS.slice(12), ...SLOTS.slice(0, 12)];
 
 const DAYS = buildNextSevenDays(14);
 
+const SPORTS = [
+  { value: "all", label: "أي رياضة" },
+  { value: "padel", label: "بادل" },
+  { value: "football", label: "كورة قدم" },
+  { value: "tennis", label: "تنس" },
+];
+
 export default function Hero() {
   const [dayIndex, setDayIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(null);
   const [endIndex, setEndIndex] = useState(null);
+  const [sportType, setSportType] = useState("all");
   const [showModal, setShowModal] = useState(false);
 
   const selectedDay = DAYS[dayIndex];
@@ -87,6 +95,19 @@ export default function Hero() {
           <div className="search-grid">
             <div className="search-field">
               <label>
+                <i className="fa-solid fa-person-running" /> الرياضة
+              </label>
+              <select value={sportType} onChange={(e) => setSportType(e.target.value)}>
+                {SPORTS.map((s) => (
+                  <option key={s.value} value={s.value}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="search-field">
+              <label>
                 <i className="fa-solid fa-calendar-days" /> اليوم
               </label>
               <select value={dayIndex} onChange={(e) => setDayIndex(Number(e.target.value))}>
@@ -139,7 +160,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {showModal && <QuickBookModal slots={selectedSlots} onClose={() => setShowModal(false)} />}
+      {showModal && <QuickBookModal slots={selectedSlots} sportType={sportType} onClose={() => setShowModal(false)} />}
     </section>
   );
 }

@@ -7,6 +7,12 @@ export async function updateCourtPrice(courtId, newPrice) {
   if (error) throw error;
 }
 
+export async function updateVenueAddress(venueId, address) {
+  const supabase = createClient();
+  const { error } = await supabase.from("venues").update({ address }).eq("id", venueId);
+  if (error) throw error;
+}
+
 // بيرفع صور جديدة على الـ storage ويرجع اللينكات العامة بتاعتها
 export async function uploadCourtPhotos(venueId, photos = []) {
   const supabase = createClient();
@@ -101,8 +107,8 @@ export async function createVenue(ownerId, venueData, courts) {
     images: [],
   }));
 
-  const { error: courtsError } = await supabase.from("courts").insert(courtRows);
+  const { data: insertedCourts, error: courtsError } = await supabase.from("courts").insert(courtRows).select();
   if (courtsError) throw courtsError;
 
-  return venueRow;
+  return { ...venueRow, courts: insertedCourts || [] };
 }

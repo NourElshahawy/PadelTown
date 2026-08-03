@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { submitOwnerNews } from "@/services/ownerNewsClient";
 
-export default function OwnerNewsForm({ authorId }) {
+export default function OwnerNewsForm({ authorId, onPublished }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [imageFile, setImageFile] = useState(null);
@@ -33,6 +33,7 @@ export default function OwnerNewsForm({ authorId }) {
       setTitle("");
       setBody("");
       setImageFile(null);
+      onPublished?.(news);
 
       fetch("/api/notifications/news-published", {
         method: "POST",

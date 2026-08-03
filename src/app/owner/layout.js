@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import "@/styles/pages/owner-dashboard.css";
 import OwnerShell from "@/components/owner-dashboard/OwnerShell";
+import { ToastProvider } from "@/components/shared/ToastProvider";
 
 export default async function OwnerLayout({ children }) {
   const supabase = await createClient();
@@ -15,7 +16,9 @@ export default async function OwnerLayout({ children }) {
 
   return (
     <div className="owner-shell" dir="rtl">
-      <OwnerShell ownerName={profile?.name}>{children}</OwnerShell>
+      <ToastProvider>
+        <OwnerShell ownerName={profile?.name}>{children}</OwnerShell>
+      </ToastProvider>
     </div>
   );
 }

@@ -1,15 +1,16 @@
 "use client";
 import { useState } from "react";
-import { updateCourt } from "@/services/ownerVenuesClient";
+import { updateCourt, updateVenueAddress } from "@/services/ownerVenuesClient";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import "../../styles/shared/owner-modal.css";
 
-export default function EditCourtModal({ court, venueId, onClose, onSaved }) {
+export default function EditCourtModal({ court, venueId, venueAddress, onClose, onSaved, onVenueAddressSaved }) {
   useLockBodyScroll(true);
   const [name, setName] = useState(court.name);
   const [type, setType] = useState(court.type || "regular");
   const [sportType, setSportType] = useState(court.sport_type || "padel");
   const [price, setPrice] = useState(String(court.price_per_hour));
+  const [address, setAddress] = useState(venueAddress || "");
   const [existingImages, setExistingImages] = useState(court.images || []);
   const [newPhotos, setNewPhotos] = useState([]);
   const [saving, setSaving] = useState(false);
@@ -34,15 +35,19 @@ export default function EditCourtModal({ court, venueId, onClose, onSaved }) {
     setError("");
     setSaving(true);
     try {
-      const updated = await updateCourt(court.id, venueId, {
-        name,
-        type,
-        sportType,
-        price,
-        existingImages,
-        newPhotos,
-      });
+      const [updated] = await Promise.all([
+        updateCourt(court.id, venueId, {
+          name,
+          type,
+          sportType,
+          price,
+          existingImages,
+          newPhotos,
+        }),
+        updateVenueAddress(venueId, address),
+      ]);
       onSaved(updated);
+      onVenueAddressSaved?.(address);
       onClose();
     } catch {
       setError("حصل خطأ أثناء حفظ التعديلات، حاول تاني");
@@ -87,6 +92,11 @@ export default function EditCourtModal({ court, venueId, onClose, onSaved }) {
               <div className="col-md-6">
                 <label className="edit-court-label">السعر/ساعة</label>
                 <input className="field-input" type="number" min="0" value={price} onChange={(e) => setPrice(e.target.value)} required />
+              </div>
+              <div className="col-12">
+                <label className="edit-court-label">عنوان النادي</label>
+                <input className="field-input" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="العنوان اللي هيظهر للاعبين" />
+                <p style={{ fontSize: ".76rem", color: "var(--text-faint)", marginTop: 4 }}>ده عنوان النادي كله، مش الملعب ده بس — لو غيّرته هيتغيّر لكل الملاعب اللي جوه نفس النادي.</p>
               </div>
 
               <div className="col-12">

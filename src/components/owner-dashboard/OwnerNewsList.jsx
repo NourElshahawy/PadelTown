@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { deleteOwnerNews } from "@/services/ownerNewsClient";
 
-export default function OwnerNewsList({ initialNews }) {
-  const [news, setNews] = useState(initialNews);
+export default function OwnerNewsList({ news, onDeleted }) {
   const [deletingId, setDeletingId] = useState(null);
 
   const handleDelete = async (id) => {
@@ -11,7 +10,7 @@ export default function OwnerNewsList({ initialNews }) {
     setDeletingId(id);
     try {
       await deleteOwnerNews(id);
-      setNews((prev) => prev.filter((n) => n.id !== id));
+      onDeleted(id);
     } catch {
       alert("حصل خطأ أثناء الحذف");
     } finally {

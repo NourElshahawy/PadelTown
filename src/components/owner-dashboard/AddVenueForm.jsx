@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { createVenue } from "@/services/ownerVenuesClient";
+import { useToast } from "@/components/shared/ToastProvider";
 
 const AMENITIES = [
   { value: "parking", label: "موقف سيارات" },
@@ -11,6 +12,7 @@ const AMENITIES = [
 ];
 
 export default function AddVenueForm({ ownerId, onCreated }) {
+  const { showToast } = useToast();
   const [open, setOpen] = useState(false);
   const [venue, setVenue] = useState({ name: "", address: "", phone: "", email: "", description: "", amenities: [] });
   const [courts, setCourts] = useState([{ name: "", type: "regular", sportType: "padel", price: "" }]);
@@ -29,14 +31,14 @@ export default function AddVenueForm({ ownerId, onCreated }) {
     if (!canSubmit) return;
     setSubmitting(true);
     try {
-      await createVenue(ownerId, venue, courts);
-      alert("تم إرسال ملعبك الجديد للمراجعة، هيظهر بعد موافقة الإدارة.");
+      const newVenue = await createVenue(ownerId, venue, courts);
+      showToast("تم إضافة ملعبك بنجاح", "success");
       setOpen(false);
       setVenue({ name: "", address: "", phone: "", email: "", description: "", amenities: [] });
       setCourts([{ name: "", type: "regular", sportType: "padel", price: "" }]);
-      onCreated?.();
+      onCreated?.(newVenue);
     } catch {
-      alert("حصل خطأ أثناء إضافة الملعب");
+      showToast("حصل خطأ أثناء إضافة الملعب", "error");
     } finally {
       setSubmitting(false);
     }

@@ -2,8 +2,9 @@
 import { useState } from "react";
 import AddCourtForm from "./AddCourtForm";
 import EditCourtModal from "./EditCourtModal";
+import AddVenueForm from "./AddVenueForm";
 
-export default function VenuesManager({ venues }) {
+export default function VenuesManager({ venues, ownerId }) {
   const [localVenues, setLocalVenues] = useState(venues);
   const [editingCourt, setEditingCourt] = useState(null); // { venueId, court }
 
@@ -15,10 +16,18 @@ export default function VenuesManager({ venues }) {
     setLocalVenues((prev) => prev.map((v) => (v.id === venueId ? { ...v, courts: v.courts.map((c) => (c.id === updatedCourt.id ? { ...c, ...updatedCourt } : c)) } : v)));
   };
 
-  if (localVenues.length === 0) return <p className="owner-table-empty">مفيش ملاعب مسجلة بعد.</p>;
+  const handleVenueAddressSaved = (venueId, address) => {
+    setLocalVenues((prev) => prev.map((v) => (v.id === venueId ? { ...v, address } : v)));
+  };
+
+  const handleVenueCreated = (newVenue) => {
+    setLocalVenues((prev) => [...prev, newVenue]);
+  };
 
   return (
     <>
+      {localVenues.length === 0 && <p className="owner-table-empty">مفيش ملاعب مسجلة بعد.</p>}
+
       {localVenues.map((venue) => (
         <div key={venue.id} className="owner-venue-block">
           <div className="owner-venue-block-header">
@@ -45,8 +54,20 @@ export default function VenuesManager({ venues }) {
       ))}
 
       {editingCourt && (
-        <EditCourtModal court={editingCourt.court} venueId={editingCourt.venueId} onClose={() => setEditingCourt(null)} onSaved={(updated) => handleCourtSaved(editingCourt.venueId, updated)} />
+        <EditCourtModal
+          court={editingCourt.court}
+          venueId={editingCourt.venueId}
+          venueAddress={localVenues.find((v) => v.id === editingCourt.venueId)?.address}
+          onClose={() => setEditingCourt(null)}
+          onSaved={(updated) => handleCourtSaved(editingCourt.venueId, updated)}
+          onVenueAddressSaved={(address) => handleVenueAddressSaved(editingCourt.venueId, address)}
+        />
       )}
+
+      <div style={{ marginTop: 24, paddingTop: 24, borderTop: "1px solid var(--border-glass)" }}>
+        <p style={{ color: "var(--text-faint)", fontSize: ".82rem", marginBottom: 10 }}>عندك نادي في مكان مختلف تمامًا (مش امتداد لنادٍ موجود)؟</p>
+        <AddVenueForm ownerId={ownerId} onCreated={handleVenueCreated} />
+      </div>
     </>
   );
 }

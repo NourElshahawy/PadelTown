@@ -1,6 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import OwnerNewsForm from "@/components/owner-dashboard/OwnerNewsForm";
-import OwnerNewsList from "@/components/owner-dashboard/OwnerNewsList";
+import OwnerNewsManager from "@/components/owner-dashboard/OwnerNewsManager";
 
 export default async function OwnerNewsPage() {
   const supabase = await createClient();
@@ -13,12 +12,7 @@ export default async function OwnerNewsPage() {
   return (
     <>
       <h1 className="owner-page-title">الأخبار والإعلانات</h1>
-      <OwnerNewsForm authorId={user.id} />
-
-      <div className="owner-card">
-        <h2 className="owner-card-title">أخباري</h2>
-        <OwnerNewsList initialNews={myNews || []} />
-      </div>
+      <OwnerNewsManager authorId={user.id} initialNews={myNews || []} />
     </>
   );
 }
