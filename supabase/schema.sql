@@ -59,6 +59,7 @@ CREATE TABLE public.courts (
   venue_id uuid NOT NULL,
   name text NOT NULL,
   type text DEFAULT 'regular'::text CHECK (type = ANY (ARRAY['regular'::text, 'panoramic'::text, 'indoor'::text, 'outdoor'::text])),
+  sport_type text NOT NULL DEFAULT 'padel'::text CHECK (sport_type = ANY (ARRAY['padel'::text, 'football'::text, 'tennis'::text])),
   price_per_hour numeric NOT NULL,
   images text[] DEFAULT '{}'::text[],
   created_at timestamp with time zone DEFAULT now(),

@@ -22,6 +22,19 @@ export default function CourtRow({ court, index, onChange, onRemove, canRemove }
         </div>
         <div className="col-md-6">
           <div className="field-group mb-0">
+            <label>الرياضة</label>
+            <div className="field-input-wrap">
+              <i className="fa-solid fa-person-running field-icon"></i>
+              <select className="field-input" value={court.sportType || "padel"} onChange={(e) => onChange({ ...court, sportType: e.target.value })}>
+                <option value="padel">بادل</option>
+                <option value="football">كورة قدم</option>
+                <option value="tennis">تنس</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="field-group mb-0">
             <label>نوع الملعب</label>
             <div className="field-input-wrap">
               <i className="fa-solid fa-layer-group field-icon"></i>
@@ -34,7 +47,7 @@ export default function CourtRow({ court, index, onChange, onRemove, canRemove }
             </div>
           </div>
         </div>
-        <div className="col-md-6">
+        <div className="col-12">
           <div className="field-group mb-0">
             <label>السعر / ساعة (جنيه)</label>
             <div className="field-input-wrap">

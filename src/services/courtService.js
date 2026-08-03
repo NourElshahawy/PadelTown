@@ -9,7 +9,7 @@ export async function getAllCourts({ date } = {}) {
     .select(
       `
       id, name, address, phone, description, amenities,
-      courts (id, name, type, price_per_hour, images)
+      courts (id, name, type, sport_type, price_per_hour, images)
     `,
     )
     .eq("status", "approved");
@@ -49,6 +49,7 @@ export async function getAllCourts({ date } = {}) {
   });
 
   const TYPE_LABELS = { regular: "عادي", indoor: "مغطى", outdoor: "مفتوح", panoramic: "بانورامي" };
+  const SPORT_LABELS = { padel: "بادل", football: "كورة قدم", tennis: "تنس" };
 
   return venues
     .flatMap((venue) =>
@@ -77,6 +78,8 @@ export async function getAllCourts({ date } = {}) {
           pricePerHour: court.price_per_hour,
           priceRangeLabel: `${court.price_per_hour}`,
           typeLabel: TYPE_LABELS[court.type] || court.type,
+          sportType: court.sport_type || "padel",
+          sportTypeLabel: SPORT_LABELS[court.sport_type] || SPORT_LABELS.padel,
           courtsCount: venue.courts.length,
           bookingsCount: formatBookingsCount(countByCourtId[court.id] || 0),
           featured: false,

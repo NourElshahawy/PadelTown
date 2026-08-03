@@ -34,6 +34,7 @@ export async function addCourtToVenue(venueId, courtData, photos = []) {
       venue_id: venueId,
       name: courtData.name,
       type: courtData.type,
+      sport_type: courtData.sportType || "padel",
       price_per_hour: Number(courtData.price),
       images: imageUrls,
     })
@@ -44,10 +45,10 @@ export async function addCourtToVenue(venueId, courtData, photos = []) {
   return data;
 }
 
-// تعديل شامل لملعب موجود بعد الإنشاء: الاسم، النوع، السعر، والصور
+// تعديل شامل لملعب موجود بعد الإنشاء: الاسم، النوع، الرياضة، السعر، والصور
 // existingImages: اللينكات اللي الأونر مسيبها زي ما هي (بعد ما يشيل اللي عايز يشيله)
 // newPhotos: صور جديدة (بصيغة {dataUrl}) هترفع وتتضاف على الصور القديمة
-export async function updateCourt(courtId, venueId, { name, type, price, existingImages = [], newPhotos = [] }) {
+export async function updateCourt(courtId, venueId, { name, type, sportType, price, existingImages = [], newPhotos = [] }) {
   const supabase = createClient();
 
   const uploadedUrls = await uploadCourtPhotos(venueId, newPhotos);
@@ -58,6 +59,7 @@ export async function updateCourt(courtId, venueId, { name, type, price, existin
     .update({
       name,
       type,
+      sport_type: sportType || "padel",
       price_per_hour: Number(price),
       images,
     })
@@ -94,6 +96,7 @@ export async function createVenue(ownerId, venueData, courts) {
     venue_id: venueRow.id,
     name: c.name,
     type: c.type,
+    sport_type: c.sportType || "padel",
     price_per_hour: Number(c.price),
     images: [],
   }));

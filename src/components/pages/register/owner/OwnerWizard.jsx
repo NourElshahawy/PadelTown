@@ -20,7 +20,7 @@ export default function OwnerWizard() {
   const [currentStep, setCurrentStep] = useState(1);
 
   const [venue, setVenue] = useState({ name: "", address: "", phone: "", email: "", description: "" });
-  const [courts, setCourts] = useState([{ id: nextCourtId++, name: "", type: "regular", price: "" }]);
+  const [courts, setCourts] = useState([{ id: nextCourtId++, name: "", type: "regular", sportType: "padel", price: "" }]);
   const [photosByCourtId, setPhotosByCourtId] = useState({});
   const [amenities, setAmenities] = useState([]);
   const [hours, setHours] = useState({ weekdayOpen: "08:00", weekdayClose: "24:00", fridayOpen: "10:00", fridayClose: "24:00" });
@@ -33,7 +33,7 @@ export default function OwnerWizard() {
   const updateVenue = (patch) => setVenue((v) => ({ ...v, ...patch }));
 
   const updateCourt = (id, updated) => setCourts((cs) => cs.map((c) => (c.id === id ? updated : c)));
-  const addCourt = () => setCourts((cs) => (cs.length >= 20 ? cs : [...cs, { id: nextCourtId++, name: "", type: "regular", price: "" }]));
+  const addCourt = () => setCourts((cs) => (cs.length >= 20 ? cs : [...cs, { id: nextCourtId++, name: "", type: "regular", sportType: "padel", price: "" }]));
   const removeCourt = (id) => {
     setCourts((cs) => cs.filter((c) => c.id !== id));
     setPhotosByCourtId((p) => {

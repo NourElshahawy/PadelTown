@@ -8,6 +8,7 @@ export default function EditCourtModal({ court, venueId, onClose, onSaved }) {
   useLockBodyScroll(true);
   const [name, setName] = useState(court.name);
   const [type, setType] = useState(court.type || "regular");
+  const [sportType, setSportType] = useState(court.sport_type || "padel");
   const [price, setPrice] = useState(String(court.price_per_hour));
   const [existingImages, setExistingImages] = useState(court.images || []);
   const [newPhotos, setNewPhotos] = useState([]);
@@ -36,6 +37,7 @@ export default function EditCourtModal({ court, venueId, onClose, onSaved }) {
       const updated = await updateCourt(court.id, venueId, {
         name,
         type,
+        sportType,
         price,
         existingImages,
         newPhotos,
@@ -64,6 +66,14 @@ export default function EditCourtModal({ court, venueId, onClose, onSaved }) {
               <div className="col-12">
                 <label className="edit-court-label">اسم الملعب</label>
                 <input className="field-input" value={name} onChange={(e) => setName(e.target.value)} required />
+              </div>
+              <div className="col-md-6">
+                <label className="edit-court-label">الرياضة</label>
+                <select className="field-input" value={sportType} onChange={(e) => setSportType(e.target.value)}>
+                  <option value="padel">بادل</option>
+                  <option value="football">كورة قدم</option>
+                  <option value="tennis">تنس</option>
+                </select>
               </div>
               <div className="col-md-6">
                 <label className="edit-court-label">النوع</label>

@@ -13,13 +13,10 @@ export default function Footer() {
             </Link>
             <p>أسرع طريقة للعثور على ملعب بادل وحجزه في المنصورة — مواعيد فورية، أندية موثقة، دفع آمن.</p>
             <div className="social-row">
-              <a href="https://www.instagram.com/nour_elshahawy537?igsh=YnpybjFwY2c3aWtu&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/acetowneg/" target="_blank" rel="noreferrer" aria-label="Instagram">
                 <i className="fa-brands fa-instagram" />
               </a>
-              <a href="https://www.facebook.com/share/1BNVDW1vNS/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Facebook">
-                <i className="fa-brands fa-facebook" />
-              </a>
-              <a href="https://wa.me/201065801252" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+              <a href="https://wa.me/201000665539" target="_blank" rel="noreferrer" aria-label="WhatsApp">
                 <i className="fa-brands fa-whatsapp" />
               </a>
             </div>
@@ -42,14 +39,14 @@ export default function Footer() {
             <h4>تواصل معنا</h4>
             <ul className="footer-contact">
               <li>
-                <Link href="https://maps.google.com/?q=El+Mashaya+Mansoura+Dakahlia+Egypt" target="_blank" rel="noreferrer">
-                  <i className="fa-solid fa-location-dot" /> المشاية، المنصورة، الدقهلية، مصر
+                <Link href="https://www.google.com/maps?q=Ace+Town,+Ring+Road+9+Mansoura+city+-+Hod+el+bashtamer+No,+Mansoura+Qism+2,+El+Mansoura+1,+Dakahlia+Governorate+7631122&ftid=0x14f79d58d1ffde1b:0x8d037a877e1e394f" target="_blank" rel="noreferrer">
+                  <i className="fa-solid fa-location-dot" /> الطريق الدائري، حوض البشتامر، المنصورة قسم 2، الدقهلية
                 </Link>
               </li>
               <li>
-                <Link href="tel:+201065801252">
+                <Link href="tel:+201000665539">
                   <i className="fa-solid fa-phone-volume"></i>
-                  +20 1065801252
+                  +20 100 066 5539
                 </Link>
               </li>
               <li>

@@ -6,6 +6,7 @@ export default function AddCourtForm({ venueId, onAdded }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [type, setType] = useState("regular");
+  const [sportType, setSportType] = useState("padel");
   const [price, setPrice] = useState("");
   const [photos, setPhotos] = useState([]);
   const [submitting, setSubmitting] = useState(false);
@@ -27,11 +28,12 @@ export default function AddCourtForm({ venueId, onAdded }) {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const newCourt = await addCourtToVenue(venueId, { name, type, price }, photos);
+      const newCourt = await addCourtToVenue(venueId, { name, type, sportType, price }, photos);
       onAdded(newCourt);
       setOpen(false);
       setName("");
       setType("regular");
+      setSportType("padel");
       setPrice("");
       setPhotos([]);
     } catch {
@@ -54,6 +56,13 @@ export default function AddCourtForm({ venueId, onAdded }) {
       <div className="row g-2">
         <div className="col-12">
           <input className="field-input" placeholder="اسم الملعب" value={name} onChange={(e) => setName(e.target.value)} required />
+        </div>
+        <div className="col-md-6">
+          <select className="field-input" value={sportType} onChange={(e) => setSportType(e.target.value)}>
+            <option value="padel">بادل</option>
+            <option value="football">كورة قدم</option>
+            <option value="tennis">تنس</option>
+          </select>
         </div>
         <div className="col-md-6">
           <select className="field-input" value={type} onChange={(e) => setType(e.target.value)}>

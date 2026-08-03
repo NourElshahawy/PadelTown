@@ -1,6 +1,6 @@
 "use client";
 
-const WHATSAPP_NUMBER = "201065801252"; // ← رقم إنستا بادل بصيغة دولية بدون +
+const WHATSAPP_NUMBER = "201000665539"; // ← رقم Ace Town بصيغة دولية بدون +
 
 export default function WhatsAppFloatButton() {
   const message = encodeURIComponent("مرحبًا، عندي استفسار بخصوص Ace Town");

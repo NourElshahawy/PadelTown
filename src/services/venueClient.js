@@ -45,6 +45,7 @@ const { error: uploadError } = await supabase.storage.from("venue-photos").uploa
       venue_id: venueRow.id,
       name: court.name,
       type: court.type,
+      sport_type: court.sportType || "padel",
       price_per_hour: Number(court.price),
       images: imageUrls,
     });

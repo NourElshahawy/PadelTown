@@ -10,7 +10,7 @@ import EmptyState from "@/components/shared/EmptyState";
 import ParallaxBg from "@/components/ui/ParallaxBg";
 
 const PAGE_SIZE = 6;
-const DEFAULT_FILTERS = { maxPrice: 300, minRating: 0 };
+const DEFAULT_FILTERS = { maxPrice: 300, minRating: 0, sportType: "all" };
 
 export default function CourtsListing({ courts , searchFilters }) {
   const highestPrice = Math.max(...courts.map((c) => c.pricePerHour), 200);
@@ -19,6 +19,7 @@ export default function CourtsListing({ courts , searchFilters }) {
     maxPrice: highestPrice,
     minRating: 0,
     searchQuery: "",
+    sportType: "all",
   });
   const [sortMode, setSortMode] = useState("recommended");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -30,7 +31,8 @@ export default function CourtsListing({ courts , searchFilters }) {
       const matchesPrice = c.pricePerHour <= filters.maxPrice;
       const matchesRating = c.rating >= filters.minRating;
       const matchesSearch = !query || c.name.toLowerCase().includes(query);
-      return matchesPrice && matchesRating && matchesSearch;
+      const matchesSport = filters.sportType === "all" || c.sportType === filters.sportType;
+      return matchesPrice && matchesRating && matchesSearch && matchesSport;
     });
 
     if (sortMode === "price-asc") list = [...list].sort((a, b) => a.pricePerHour - b.pricePerHour);
@@ -54,7 +56,7 @@ export default function CourtsListing({ courts , searchFilters }) {
   };
 
   const clearAll = () => {
-    setFilters({ maxPrice: highestPrice, minRating: 0, searchQuery: "" });
+    setFilters({ maxPrice: highestPrice, minRating: 0, searchQuery: "", sportType: "all" });
     setSortMode("recommended");
     setCurrentPage(1);
   };

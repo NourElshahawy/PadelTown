@@ -1,6 +1,12 @@
 "use client";
 
 const RATINGS = [0, 4.5, 4.8];
+const SPORTS = [
+  { value: "all", label: "الكل" },
+  { value: "padel", label: "بادل" },
+  { value: "football", label: "كورة قدم" },
+  { value: "tennis", label: "تنس" },
+];
 
 export default function FilterSidebar({
   filters,
@@ -8,7 +14,7 @@ export default function FilterSidebar({
   onClear,
   isOpen,
 }) {
-  const { maxPrice, minRating, searchQuery } = filters;
+  const { maxPrice, minRating, searchQuery, sportType } = filters;
 
   return (
     <div className={`col-lg-3 filter-sidebar-col ${isOpen ? "is-open" : ""}`}>
@@ -18,6 +24,17 @@ export default function FilterSidebar({
           <span className="clear-filters" onClick={onClear}>
             مسح الكل
           </span>
+        </div>
+
+        <div className="filter-group">
+          <span className="filter-label">الرياضة</span>
+          <div className="chip-select">
+            {SPORTS.map((s) => (
+              <span key={s.value} className={`chip-option ${sportType === s.value ? "is-active" : ""}`} onClick={() => setFilters((f) => ({ ...f, sportType: s.value }))}>
+                {s.label}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="filter-group">
