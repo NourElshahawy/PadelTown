@@ -1,0 +1,240 @@
+:root {
+  /* ===== الألوان الأساسية الجديدة (كحلي + مرجاني) ===== */
+  --primary: #3B82F6;
+  --primary-2: #60A5FA;
+  --primary-3: #2563EB;
+  --accent: #E0857A;
+    --accent-2: #C96B5F;
+  --grad: linear-gradient(120deg, #3B82F6 0%, #60A5FA 100%);
+--grad-text: linear-gradient(120deg, #60A5FA 0%, #3B82F6 40%, #E0857A 120%);
+  /* ===== نص القيم القديمة، عشان الكلاسات الحالية متتكسرش ===== */
+  --accent-dark: var(--accent-2);
+  --accent-glow: rgba(224, 133, 122, .3);
+    --accent-soft: rgba(224, 133, 122, .12);
+
+  --r-lg: 24px;
+  --r-md: 18px;
+  --r-sm: 14px;
+  --r-pill: 999px;
+  --font-display: "Urbanist", "Plus Jakarta Sans", sans-serif;
+  --font-body: "Urbanist", "Plus Jakarta Sans", sans-serif;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* ===== الوضع الداكن (افتراضي) ===== */
+  --bg-primary: #0F1729;
+  --bg-secondary: #16213A;
+  --bg-elevated: #1A2740;
+  --bg-elevated-2: #202D4A;
+  --white: #F8FAFC;
+  --light-gray: #F8FAFC;
+  --text-muted: rgba(248, 250, 252, .66);
+  --text-faint: rgba(248, 250, 252, .44);
+  --border-glass: rgba(255, 255, 255, .09);
+  --border-glass-strong: rgba(255, 255, 255, .16);
+  --glass-fill: rgba(22, 33, 58, .6);
+  --glass-fill-light: rgba(255, 255, 255, .05);
+  --shadow-card: 0 14px 34px rgba(0, 0, 0, .42);
+  --shadow-lift: 0 28px 70px rgba(0, 0, 0, .55);
+  --shadow-glow: 0 10px 40px var(--accent-glow);
+  --nav-bg: rgba(15, 23, 41, .66);
+  --primary-soft: rgba(109, 40, 255, .16);
+}
+
+/* ===== الوضع الفاتح ===== */
+[data-theme="light"] {
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #EEF2F8;
+  --bg-elevated: #FFFFFF;
+  --bg-elevated-2: #F5F7FB;
+  --white: #0F1115;
+  --light-gray: #0F1115;
+  --text-muted: rgba(15, 17, 21, .6);
+  --text-faint: rgba(15, 17, 21, .46);
+  --border-glass: rgba(15, 17, 21, .08);
+  --border-glass-strong: rgba(15, 17, 21, .14);
+  --glass-fill: rgba(255, 255, 255, .72);
+  --glass-fill-light: rgba(15, 17, 21, .03);
+  --shadow-card: 0 14px 34px rgba(76, 40, 130, .1);
+  --shadow-lift: 0 28px 70px rgba(76, 40, 130, .16);
+  --nav-bg: rgba(248, 250, 252, .78);
+  --primary-soft: rgba(109, 40, 255, .1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-family: var(--font-urbanist), sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  direction: rtl;
+  transition: background .5s var(--ease), color .5s var(--ease);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.12;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* المفروض نستبدل كل استخدام لـ --accent كـ لون تفاعل رئيسي بـ --primary في العناصر التفاعلية (أزرار، لينكات) */
+
+
+.theme-toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-glass);
+  background: var(--glass-fill-light);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .3s var(--ease);
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+[data-theme="light"] .parallax-bg,
+[data-theme="light"] .news-section:after,
+[data-theme="light"] .courts-section:after,
+[data-theme="light"] .hero:after {
+  display: none;
+}
+
+[data-theme="light"] .search-card,
+[data-theme="light"] .news-item,
+[data-theme="light"] .feature-card,
+[data-theme="light"] .footer,
+[data-theme="light"] .court-card,
+[data-theme="light"] .filter-card,
+[data-theme="light"] .tournament-list-card,
+[data-theme="light"] .news-feature-info,
+[data-theme="light"] .news-card-body,
+[data-theme="light"] .partner-card,
+[data-theme="light"] .auth-form-col,
+[data-theme="light"] .auth-visual-quote,
+[data-theme="light"] .booking-summary,
+[data-theme="light"] .booking-success.show,
+[data-theme="light"] .booking-days,
+[data-theme="light"] .hero-details,
+[data-theme="light"] .step-bar,
+[data-theme="light"] .court-badge-live,
+[data-theme="light"] .confirm-modal-box,
+[data-theme="light"] .toast-success,
+[data-theme="light"] .team-stepper,
+[data-theme="light"] button:focus:not(:focus-visible),
+[data-theme="light"] .news-featured-content p,
+[data-theme="light"] .td-hero,
+[data-theme="light"] .td-progress-track,
+[data-theme="light"] .td-countdown,
+[data-theme="light"] .td-stat-card,
+[data-theme="light"] .td-hero--live,
+    [data-theme="light"] .td-bracket-card,
+    [data-theme="light"] .td-bracket-card.is-final,
+    [data-theme="light"] .td-match-card,
+    [data-theme="light"] .td-fab--muted,
+      [data-theme="light"] .filter-search-input{
+  background: radial-gradient(circle at 30% 20%, #00d68f38, transparent 55%), radial-gradient(circle at 80% 80%, #00d68f24, transparent 50%), var(--bg-secondary);
+}
+
+[data-theme="light"] .booking-days,
+[data-theme="light"] .hero-details,
+[data-theme="light"] .step-bar{
+  padding: 20px;
+  border-radius: 10px;
+}
+
+[data-theme="light"] .court-price-tag,
+[data-theme="light"] .auth-visual-content h2,
+[data-theme="light"] .auth-feature-list .item,
+[data-theme="light"] .news-featured-content h3,
+[data-theme="light"] .news-date{
+  color: #fdeded;
+}
+
+[data-theme="light"] .read-more-link,
+[data-theme="light"] .news-card-body h3,
+[data-theme="light"] .news-feature-info h2,
+[data-theme="light"] :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands, .fa-classic, .fa):before,
+[data-theme="light"] .profile-menu-item--highlight,
+[data-theme="light"] .td-section-title,
+[data-theme="light"] .td-timeline-text,
+[data-theme="light"] .td-hero-title,
+[data-theme="light"] .td-match-team,
+[data-theme="light"] .td-match-score,
+[data-theme="light"] .td-bracket-result,
+[data-theme="light"] .radio-pill,
+[data-theme="light"] .form-control
+{
+color: var(--primary);
+}
+[data-theme="light"] .email-icon,
+[data-theme="light"] .tracker-step.is-done .ts-icon,
+[data-theme="light"] .jp-btn.accept{
+  background: transparent;
+}
+
+ .profile-menu-header {
+    justify-content: space-between;
+  }
+
+:root[data-theme="light"] {
+  --accent: var(--primary);
+}
+

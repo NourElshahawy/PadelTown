@@ -1,0 +1,29 @@
+.courts-section {
+    position: relative;
+    padding-top: 100px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* .courts-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(/assets/imgs/courts-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -3;
+} */
+
+.courts-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(5, 10, 20, .55) 0%, rgba(5, 10, 20, .7) 40%, rgba(5, 10, 20, .88) 75%, rgba(5, 10, 20, .95) 100%);
+    z-index: -2;
+}
+
+.courts-grid {
+    margin-top: 60px;
+}

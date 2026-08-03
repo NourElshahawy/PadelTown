@@ -1,0 +1,65 @@
+.tournament-list-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--r-lg);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 100%;
+    transition: all .35s var(--ease);
+}
+
+.tournament-list-card:hover {
+    border-color: var(--border-glass-strong);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+}
+
+.tournament-list-badge {
+    align-self: flex-start;
+    font-size: .74rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: var(--r-pill);
+}
+
+.tournament-list-badge.registration {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.tournament-list-badge.live {
+    background: rgba(255, 75, 75, .12);
+    color: #ff4b4b;
+}
+
+.tournament-list-badge.completed {
+    background: rgba(242, 183, 5, .12);
+    color: #f2b705;
+}
+
+.tournament-list-card h3 {
+    font-size: 1.1rem;
+    color: var(--white);
+}
+
+.tournament-list-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: .84rem;
+    color: var(--text-muted);
+}
+
+.tournament-list-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tournament-list-meta i{
+    color: var(--accent);
+    font-size: 15px;
+    width: 16px;
+}

@@ -1,0 +1,238 @@
+.court-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s var(--ease);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.court-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lift);
+    border-color: var(--border-glass-strong);
+}
+
+.court-media {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.court-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s var(--ease);
+}
+
+.court-card:hover .court-media img {
+    transform: scale(1.08);
+}
+
+.court-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(11, 16, 32, .85) 100%);
+}
+
+.court-badge-live {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(11, 16, 32, .65);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-glass-strong);
+    border-radius: var(--r-pill);
+    padding: 6px 12px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+    color: var(--accent);
+}
+
+.court-badge-live .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    position: relative;
+}
+
+.court-badge-live .pulse-dot::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    animation: pulseRing 1.8s ease-out infinite;
+}
+
+.court-rating {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(11, 16, 32, .65);
+    backdrop-filter: blur(8px);
+    border-radius: var(--r-pill);
+    padding: 6px 11px;
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.court-rating i {
+    font-size: 15px;
+    color: #ffc453;
+}
+
+.court-price-tag {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    z-index: 2;
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.18rem;
+}
+
+.court-price-tag span {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: .78rem;
+    color: var(--text-muted);
+}
+
+.court-body {
+    padding: 22px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+.court-name {
+    font-size: 1.18rem;
+    color: var(--white);
+}
+
+.court-loc-inline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .86rem;
+    color: var(--text-muted);
+}
+
+.court-loc-inline i {
+    color: var(--accent);
+}
+
+.court-stats {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.court-stats .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.court-stats .stat b {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--white);
+}
+
+.court-stats .stat span {
+    font-size: .72rem;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.slot-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.slot-chip {
+    font-size: .78rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--r-pill);
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid transparent;
+    transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+
+.slot-chip.is-taken {
+    background: transparent;
+    color: var(--text-faint);
+    border-color: var(--border-glass);
+    text-decoration: line-through;
+}
+
+.slot-chip.is-leaving {
+    transform: scale(0.7);
+}
+
+.court-foot {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+@keyframes pulseRing {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.8);
+    }
+}
+
+
+.court-badge-live {
+    color: var(--accent);
+}
+
+.court-badge-live .pulse-dot {
+    background: var(--accent);
+}
+
+.court-badge-live .pulse-dot::after {
+    border-color: var(--accent);
+}
+
+.court-price-tag {
+    color: var(--white);
+}
+
+.slot-chip {
+    background: var(--primary-soft);
+    color: var(--primary);
+}

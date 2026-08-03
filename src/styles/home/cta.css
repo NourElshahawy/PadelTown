@@ -1,0 +1,22 @@
+.cta-band {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    padding: 80px 40px;
+    text-align: center;
+   border: 1px solid var(--border-glass);
+   background: radial-gradient(circle at 30% 20%, #00d68f38, transparent 55%),
+    radial-gradient(circle at 80% 80%, #00d68f24, transparent 50%),
+    #14171f26;
+}
+
+.cta-band h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 16px;
+}
+
+.cta-band p {
+    max-width: 480px;
+    margin: 0 auto 34px;
+    font-size: 1.02rem;
+}

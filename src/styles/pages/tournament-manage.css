@@ -1,0 +1,117 @@
+.manage-page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 100px 16px 60px;
+}
+
+.manage-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--r-lg);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.manage-section h3 {
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.manage-team-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-glass);
+    font-size: .88rem;
+}
+
+.manage-team-row:last-child {
+    border-bottom: 0;
+}
+
+.manage-team-row b {
+    color: var(--white);
+}
+
+.manage-team-row span {
+    color: var(--text-faint);
+    font-size: .8rem;
+}
+
+.start-tournament-banner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.start-tournament-banner p {
+    color: var(--text-muted);
+    font-size: .86rem;
+}
+
+.manage-match-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--r-md);
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.manage-match-teams {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.manage-match-teams span {
+    font-size: .9rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.manage-score-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.manage-score-inputs input {
+    width: 56px;
+    text-align: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--r-sm);
+    padding: 8px;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.manage-score-inputs span {
+    color: var(--text-faint);
+}
+
+.manage-match-card .btn {
+    margin-top: 12px;
+    width: 100%;
+}
+
+.manage-match-done {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-size: .84rem;
+    font-weight: 600;
+}
+
+.not-authorized {
+    text-align: center;
+    padding: 100px 20px;
+    color: var(--text-muted);
+}

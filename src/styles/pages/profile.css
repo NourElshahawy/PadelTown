@@ -1,0 +1,29 @@
+.profile-page { max-width: 900px; margin: 0 auto; padding: 140px 20px 60px; }
+.profile-header { display: flex; align-items: center; gap: 18px; margin-bottom: 36px; }
+.profile-header .profile-menu-avatar { width: 68px; height: 68px; font-size: 1.5rem; }
+.profile-header h1 { font-size: 1.4rem; color: var(--white); }
+.profile-header p { color: var(--text-muted); font-size: .88rem; }
+
+.profile-section { margin-bottom: 32px; }
+.profile-section h2 { font-size: 1.05rem; color: var(--white); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.profile-section h2 i { color: var(--accent); }
+
+.booking-history-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  background: var(--bg-secondary); border: 1px solid var(--border-glass); border-radius: var(--r-md);
+  padding: 16px 20px; margin-bottom: 10px;
+}
+.bhc-info b { display: block; color: var(--white); font-size: .92rem; }
+.bhc-info span { font-size: .8rem; color: var(--text-muted); }
+.bhc-price { color: var(--accent); font-weight: 800; font-family: var(--font-display); }
+
+.profile-empty-card {
+  background: var(--bg-secondary); border: 1px dashed var(--border-glass-strong); border-radius: var(--r-md);
+  padding: 24px; text-align: center; color: var(--text-faint); font-size: .88rem;
+}
+.profile-empty-card i { font-size: 28px; display: block; margin-bottom: 8px; color: var(--text-faint); }
+
+.coming-soon-badge {
+  font-size: .68rem; font-weight: 700; background: rgba(255,193,83,.12); color: #ffc453;
+  padding: 3px 10px; border-radius: var(--r-pill); margin-right: 8px;
+}

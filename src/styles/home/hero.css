@@ -1,0 +1,142 @@
+.hero {
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 70px;
+    overflow: hidden;
+    isolation: isolate;
+    min-height: 100vh;
+}
+
+/* .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(/assets/imgs/courts-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -3;
+} */
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(5, 10, 20, .55) 0%, rgba(5, 10, 20, .7) 40%, rgba(5, 10, 20, .92) 100%);
+    z-index: -2;
+}
+
+.hero-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: .5;
+    animation: floatY 7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.hero-shape.s1 {
+    width: 14px;
+    height: 14px;
+    background: var(--accent);
+    top: 22%;
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.hero-shape.s2 {
+    width: 9px;
+    height: 9px;
+    background: var(--white);
+    top: 62%;
+    left: 14%;
+    opacity: .35;
+    animation-delay: 1.4s;
+}
+
+.hero-shape.s3 {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent);
+    background: transparent;
+    top: 30%;
+    right: 10%;
+    animation-delay: .7s;
+}
+
+.hero-shape.s4 {
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    top: 74%;
+    right: 18%;
+    animation-delay: 2.1s;
+}
+
+@keyframes floatY {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-22px);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto;
+    /* height: calc(100vh - 125px); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--glass-fill);
+    border: 1px solid var(--border-glass-strong);
+    backdrop-filter: blur(10px);
+    padding: 8px 18px;
+    border-radius: var(--r-pill);
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--light-gray);
+    margin: 24px 0;
+}
+
+.hero-badge .pulse-img {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(2.3rem, 5.4vw, 4.4rem);
+    color: var(--white);
+    margin-bottom: 22px;
+}
+
+.hero-sub {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 48px;
+}
+
+.hero-badge {
+    border-color: var(--border-glass-strong);
+}
+
+.submit-icon,
+.submit-text {
+    color: #fff;
+}

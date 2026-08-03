@@ -1,0 +1,56 @@
+/* ============================================
+   1. المتغيرات الأساسية — لازم تيجي الأول
+   ============================================ */
+@import "./pages/variables.css";
+
+/* ============================================
+   2. الكلاسات المشتركة (buttons, common utilities, forms)
+   ============================================ */
+@import "./shared/common.css";
+@import "./shared/form-fields.css";
+@import "./shared/auth.css";
+@import "./shared/owner-modal.css";
+
+/* ============================================
+   3. الـ Layout (navbar, footer, profile menu)
+   ============================================ */
+@import "./layout/navbar.css";
+@import "./layout/footer.css";
+@import "./layout/profile-menu.css";
+
+/* ============================================
+   4. الهوم بيدج (بالترتيب اللي السكاشن ظاهرة بيه)
+   ============================================ */
+@import "./home/hero.css";
+@import "./home/search.css";
+@import "./home/statistics.css";
+@import "./home/featured-courts.css";
+@import "./home/featured.css";
+@import "./home/why-us.css";
+@import "./home/testimonials.css";
+@import "./home/news.css";
+@import "./home/cta.css";
+
+/* ============================================
+   5. الملاعب (مشتركة بين الهوم وصفحة الملاعب والحجز)
+   ============================================ */
+@import "./courts/card.css";
+@import "./courts/details.css";
+
+/* ============================================
+   6. صفحات مستقلة (كل واحدة معزولة عن التانية غالبًا)
+   ============================================ */
+@import "./pages/courts.css";
+@import "./pages/booking.css";
+@import "./pages/booking-confirmation.css";
+@import "./pages/news.css";
+@import "./pages/profile.css";
+@import "./pages/find-partner.css";
+@import "./pages/register.css";
+@import "./pages/owner-register.css";
+@import "./pages/tournament-wizard.css";
+@import "./pages/tournament-dashboard.css";
+@import "./pages/tournament-manage.css";
+@import "./pages/tournaments-listing.css";
+@import "./pages/forgot-password.css";
+@import "./pages/legal.css";
