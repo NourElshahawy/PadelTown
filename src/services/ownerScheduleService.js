@@ -18,7 +18,7 @@ export async function getOwnerScheduleData(ownerId) {
   }
 
 const { data: bookings } = await supabase
-  .from("booking_slots")
+  .from("bookings")
   .select("court_id, date, time")
   .in("court_id", courtIds)
   .gte("date", fromDate)

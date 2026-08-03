@@ -29,7 +29,7 @@ export async function getAllCourts({ date } = {}) {
   let bookingsForDate = [];
   if (date) {
     const { data } = await supabase
-      .from("booking_slots")
+      .from("bookings")
       .select("court_id, time")
       .in("court_id", allCourtIds.length ? allCourtIds : ["00000000-0000-0000-0000-000000000000"])
       .eq("date", date)
@@ -126,7 +126,7 @@ export async function getCourtDetails(slug) {
 
   const courtIds = (venue?.courts || []).map((c) => c.id);
   const { data: bookings } = await supabase
-    .from("booking_slots")
+    .from("bookings")
     .select("court_id, date, time")
     .in("court_id", courtIds.length ? courtIds : ["00000000-0000-0000-0000-000000000000"])
     .in("status", ["confirmed", "completed"]);

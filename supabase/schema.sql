@@ -559,3 +559,28 @@ CREATE POLICY "Owners can update own venues" ON public.venues AS PERMISSIVE FOR 
 
 CREATE POLICY "Owners can view own venues" ON public.venues AS PERMISSIVE FOR SELECT TO public
   USING ((auth.uid() = owner_id));
+
+-- ============================================================
+-- Profile auto-creation on signup (must exist for signups to work)
+-- ============================================================
+
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+ RETURNS trigger
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+AS $function$
+begin
+  insert into public.profiles (id, name, phone, email, role, owner_status)
+  values (
+    new.id,
+    new.raw_user_meta_data->>'name',
+    new.raw_user_meta_data->>'phone',
+    new.email,
+    coalesce(new.raw_user_meta_data->>'role', 'player'),
+    case when new.raw_user_meta_data->>'role' = 'owner' then 'approved' else null end
+  );
+  return new;
+end;
+$function$;
+
+CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION handle_new_user();

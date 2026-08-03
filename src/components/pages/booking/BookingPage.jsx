@@ -76,7 +76,7 @@ export default function BookingPage({ court, preselectedSubCourtId }) {
 
     const channel = supabase
       .channel(`bookings-venue-${court.id}`)
-      .on("postgres_changes", { event: "*", schema: "public", table: "booking_slots" }, (payload) => {
+      .on("postgres_changes", { event: "*", schema: "public", table: "bookings" }, (payload) => {
         const row = payload.new && Object.keys(payload.new).length ? payload.new : payload.old;
         if (!row || !courtIds.includes(row.court_id)) return;
 
