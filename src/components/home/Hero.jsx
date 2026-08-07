@@ -79,7 +79,7 @@ export default function Hero() {
         <h1 data-aos="fade-up" data-aos-delay="80">
           احجز ملعبك في
           <br />
-          <span className="accent-underline">Ace Town</span>
+          <span className="accent-underline">InstaPadel</span>
         </h1>
 
         <p className="hero-sub" data-aos="fade-up" data-aos-delay="160">

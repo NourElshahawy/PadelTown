@@ -8,7 +8,7 @@ import AvatarEditor from "@/components/pages/profile/AvatarEditor";
 import PhoneEditor from "@/components/pages/profile/PhoneEditor";
 // import "@/styles/pages/profile.css";
 
-export const metadata = { title: "الملف الشخصي — Ace Town" };
+export const metadata = { title: "الملف الشخصي — InstaPadel" };
 
 export default async function ProfilePage() {
   const supabase = await createClient();

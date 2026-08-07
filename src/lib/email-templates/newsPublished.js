@@ -8,5 +8,5 @@ export function newsPublishedEmail({ title, body }) {
     <p style="color:rgba(234,234,234,.75);font-size:14px;line-height:1.7;margin:0 0 20px;">${shortBody}${body && body.length > 200 ? "..." : ""}</p>
     <a href="${SITE_URL}/news" style="display:inline-block;background:#7c3aed;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:13px;">اقرأ الخبر كامل</a>
   `;
-  return emailWrapper("خبر جديد من Ace Town", html);
+  return emailWrapper("خبر جديد من InstaPadel", html);
 }

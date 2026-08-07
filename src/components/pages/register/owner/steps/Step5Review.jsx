@@ -77,7 +77,7 @@ export default function Step5Review({ venue, courts, amenities, cancellationPoli
         <label htmlFor="agreeTerms">
           أؤكد أن جميع المعلومات دقيقة وأوافق على{" "}
           <a href="/legal" className="auth-link">
-            شروط Ace Town لأصحاب الملاعب
+            شروط InstaPadel لأصحاب الملاعب
           </a>
           .
         </label>

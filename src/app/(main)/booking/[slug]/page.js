@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const court = await getCourtDetails(slug);
-  return { title: court ? `حجز ${court.name} — Ace Town` : "ملعب غير موجود — Ace Town" };
+  return { title: court ? `حجز ${court.name} — InstaPadel` : "ملعب غير موجود — InstaPadel" };
 }
 
 export default async function CourtBookingPage({ params, searchParams }) {

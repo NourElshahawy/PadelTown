@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import BookingConfirmationPage from "@/components/pages/confirmation/BookingConfirmationPage";
 
-export const metadata = { title: "تأكيد الحجز — Ace Town" };
+export const metadata = { title: "تأكيد الحجز — InstaPadel" };
 
 export default async function ConfirmationPage({ params, searchParams }) {
   const { slug } = await params;

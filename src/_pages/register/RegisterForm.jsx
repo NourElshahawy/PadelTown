@@ -105,13 +105,13 @@ export default function RegisterForm() {
     <div className="auth-form-col">
       <div className="auth-topbar d-flex d-lg-none">
         <Link href="/" className="brand">
-          <Image src="/assets/imgs/logo1-removebg-preview.png" alt="Ace Town" width={56} height={56} />
+          <Image src="/assets/imgs/logo1-removebg-preview.png" alt="InstaPadel" width={56} height={56} />
         </Link>
       </div>
 
       <div className="auth-card">
         <h1>أنشئ حسابك</h1>
-        <p className="auth-sub">انضم إلى Ace Town واحجز ملعبك الأول في دقائق.</p>
+        <p className="auth-sub">انضم إلى InstaPadel واحجز ملعبك الأول في دقائق.</p>
 
         <AccountTypeSelector />
 
@@ -178,7 +178,7 @@ export default function RegisterForm() {
               <Link href="/legal#privacy" className="auth-link">
                 سياسة الخصوصية
               </Link>{" "}
-              الخاصة بـ Ace Town.
+              الخاصة بـ InstaPadel.
             </label>
           </div>
 

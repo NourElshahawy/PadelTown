@@ -6,7 +6,7 @@ export default function AuthVisual({ heading, features, quote }) {
   return (
     <div className="auth-visual d-none d-lg-flex">
       {/* <Link href="/" className="brand">
-        <Image src="/assets/imgs/logo1-removebg-preview.png" alt="Ace Town" width={80} height={80} />
+        <Image src="/assets/imgs/logo1-removebg-preview.png" alt="InstaPadel" width={80} height={80} />
       </Link> */}
 
       <div className="auth-visual-content">

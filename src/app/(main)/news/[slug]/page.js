@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
   const article = await getNewsById(slug);
   if (!article) return {};
   return {
-    title: `${article.title} — Ace Town`,
+    title: `${article.title} — InstaPadel`,
     description: article.excerpt,
   };
 }

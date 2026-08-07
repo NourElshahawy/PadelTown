@@ -7,7 +7,7 @@ export default function Step1VenueInfo({ venue, updateVenue }) {
       <div className="step-header">
         <span className="eyebrow">الخطوة 1 من 5</span>
         <h2 className="mt-2">أخبرنا عن مكانك</h2>
-        <p>المعلومات الأساسية التي سيراها اللاعبون عند العثور على ناديك في Ace Town.</p>
+        <p>المعلومات الأساسية التي سيراها اللاعبون عند العثور على ناديك في InstaPadel.</p>
       </div>
 
       <div className="field-group">

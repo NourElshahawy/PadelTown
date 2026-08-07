@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { formatSlotRanges } from "@/services/courtLogic";
 import BookingConfirmationPage from "@/components/pages/confirmation/BookingConfirmationPage";
 
-export const metadata = { title: "فاتورة الحجز — Ace Town" };
+export const metadata = { title: "فاتورة الحجز — InstaPadel" };
 
 function timeToMinutes(label) {
   const match = label.trim().match(/^(\d{1,2}):(\d{2})\s*(ص|م)$/);

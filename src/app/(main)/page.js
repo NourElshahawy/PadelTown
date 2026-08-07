@@ -5,8 +5,8 @@ import CtaBand from "@/components/home/CtaBand";
 import WhyUs from "@/components/home/WhyUs";
 
 export const metadata = {
-  title: "حجز ملعب بادل في المنصورة | Ace Town",
-  description: "احجز ملعبك في Ace Town أونلاين في ثوانٍ. ملعبين بادل احترافيين في المنصورة، شوف المواعيد المتاحة فورًا واحجز مكانك بدفع آمن.",
+  title: "حجز ملعب بادل في المنصورة | InstaPadel",
+  description: "احجز ملعبك في InstaPadel أونلاين في ثوانٍ. ملعبين بادل احترافيين في المنصورة، شوف المواعيد المتاحة فورًا واحجز مكانك بدفع آمن.",
   keywords: [
     "حجز ملعب بادل المنصورة",
     "ملاعب بادل المنصورة",

@@ -16,13 +16,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Ace Town | احجز ملعبك في أقل من دقيقة",
-  description: "Ace Town — ملعبين بادل احترافيين في المنصورة. اعرف المواعيد المتاحة واحجز ملعبك بسهولة وفي ثوانٍ.",
-  applicationName: "Ace Town",
+  title: "InstaPadel | احجز ملعبك في أقل من دقيقة",
+  description: "InstaPadel — ملعبين بادل احترافيين في المنصورة. اعرف المواعيد المتاحة واحجز ملعبك بسهولة وفي ثوانٍ.",
+  applicationName: "InstaPadel",
   openGraph: {
-    siteName: "Ace Town",
-    title: "Ace Town | احجز ملعبك في أقل من دقيقة",
-    description: "Ace Town — ملعب بادل احترافي في المنصورة.",
+    siteName: "InstaPadel",
+    title: "InstaPadel | احجز ملعبك في أقل من دقيقة",
+    description: "InstaPadel — ملعب بادل احترافي في المنصورة.",
     url: SITE_URL,
     locale: "ar_EG",
     type: "website",

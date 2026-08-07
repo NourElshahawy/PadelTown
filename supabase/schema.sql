@@ -1,5 +1,5 @@
--- Ace Town — database schema, ported from PadelGo (InstaPadel) project.
--- Run this in the Ace Town project's Supabase SQL Editor (then storage_setup.sql).
+-- InstaPadel — database schema, ported from PadelGo (InstaPadel) project.
+-- Run this in the InstaPadel project's Supabase SQL Editor (then storage_setup.sql).
 --
 -- Fixed vs. the raw "Schema Visualizer" export:
 --   - `ARRAY` is not a valid standalone type; changed to `text[]` (amenities, images)

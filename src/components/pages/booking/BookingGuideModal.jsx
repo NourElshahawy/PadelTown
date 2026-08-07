@@ -18,7 +18,7 @@ export default function BookingGuideModal({ onClose }) {
   const handleClose = () => {
     if (dontShowAgain) {
       try {
-        localStorage.setItem("acetown_hide_booking_guide", "1");
+        localStorage.setItem("instapadel_hide_booking_guide", "1");
       } catch {}
     }
     onClose();

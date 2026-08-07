@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
   const { id } = await params;
   const tournament = await getTournamentById(id);
   return {
-    title: tournament ? `${tournament.name} — Ace Town` : "بطولة غير موجودة",
+    title: tournament ? `${tournament.name} — InstaPadel` : "بطولة غير موجودة",
   };
 }
 

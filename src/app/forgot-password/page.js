@@ -1,7 +1,7 @@
 import AuthVisual from "@/components/shared/AuthVisual";
 import ForgotPasswordForm from "@/components/pages/login/ForgotPasswordForm";
 
-export const metadata = { title: "استعادة كلمة المرور — Ace Town" };
+export const metadata = { title: "استعادة كلمة المرور — InstaPadel" };
 
 const FEATURES = [
   { icon: "bolt", text: "توفر المواعيد في الوقت الفعلي" },
@@ -12,7 +12,7 @@ const FEATURES = [
 export default function ForgotPasswordPage() {
   return (
     <div className="auth-shell">
-      <AuthVisual heading="ملعب Ace Town، بلمسة واحدة." features={FEATURES} />
+      <AuthVisual heading="ملعب InstaPadel، بلمسة واحدة." features={FEATURES} />
       <ForgotPasswordForm />
     </div>
   );

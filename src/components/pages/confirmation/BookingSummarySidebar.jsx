@@ -29,7 +29,7 @@ export default function BookingSummarySidebar({ booking, isPaid, isClaimed }) {
         body: JSON.stringify({
           email: booking.email,
           userId: user?.id,
-          userName: "لاعب Ace Town",
+          userName: "لاعب InstaPadel",
           venueName: booking.venueName,
           courtName: booking.subCourtName,
           date: booking.date,
@@ -48,7 +48,7 @@ export default function BookingSummarySidebar({ booking, isPaid, isClaimed }) {
     const shareText = `حجزي في ${booking.venueName} — ${booking.date}، ${booking.time}`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Ace Town — تفاصيل الحجز", text: shareText, url: window.location.href });
+        await navigator.share({ title: "InstaPadel — تفاصيل الحجز", text: shareText, url: window.location.href });
       } catch {}
     } else if (navigator.clipboard) {
       await navigator.clipboard.writeText(`${shareText}\n${window.location.href}`);

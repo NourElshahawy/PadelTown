@@ -3,8 +3,8 @@ import { getAllPartnerRequests } from "@/services/partnerRequestService";
 import { getAllCourts } from "@/services/courtService";
 
 export const metadata = {
-  title: "ابحث عن شريك بادل في المنصورة | Ace Town",
-  description: "دور على لاعب بادل يكمل معاك الفريق في ملعب Ace Town بالمنصورة، تواصل مع لاعبين تانيين وانضم بسهولة.",
+  title: "ابحث عن شريك بادل في المنصورة | InstaPadel",
+  description: "دور على لاعب بادل يكمل معاك الفريق في ملعب InstaPadel بالمنصورة، تواصل مع لاعبين تانيين وانضم بسهولة.",
   keywords: ["ابحث عن لاعب بادل", "شريك بادل", "لاعبين بادل المنصورة", "Find Padel Partner", "Padel Players Mansoura"],
 };
 

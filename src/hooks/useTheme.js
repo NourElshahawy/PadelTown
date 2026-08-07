@@ -5,7 +5,7 @@ export function useTheme() {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    const saved = localStorage.getItem("acetown-theme") || "dark";
+    const saved = localStorage.getItem("instapadel-theme") || "dark";
     setTheme(saved);
     document.documentElement.setAttribute("data-theme", saved);
   }, []);
@@ -14,7 +14,7 @@ export function useTheme() {
     const next = theme === "dark" ? "light" : "dark";
     setTheme(next);
     document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("acetown-theme", next);
+    localStorage.setItem("instapadel-theme", next);
   };
 
   return { theme, toggleTheme };

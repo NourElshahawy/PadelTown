@@ -8,7 +8,7 @@ export default function HeroActionsBar({ courtSlug }) {
     const url = typeof window !== "undefined" ? window.location.href : "";
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Ace Town", url });
+        await navigator.share({ title: "InstaPadel", url });
       } catch {}
     } else if (navigator.clipboard) {
       await navigator.clipboard.writeText(url);

@@ -41,7 +41,7 @@ export default function Navbar() {
     <header className={`navbar-ph ${isScrolled ? "is-scrolled" : ""}`}>
       <div className="container d-flex align-items-center justify-content-between">
         <Link href="/" className="brand">
-          <Image src="/assets/imgs/logo1-removebg-preview.png" alt="Ace Town" width={56} height={56} priority />
+          <Image src="/assets/imgs/logo1-removebg-preview.png" alt="InstaPadel" width={56} height={56} priority />
         </Link>
 
         <nav className={`nav-links ${isOpen ? "is-open" : ""}`} id="navLinks">
@@ -50,7 +50,7 @@ export default function Navbar() {
           </button>
 
           <Link href="/" className="brand logo-mobil" onClick={closeMenu}>
-            <Image src="/assets/imgs/logo1-removebg-preview.png" alt="Ace Town" width={56} height={56} />
+            <Image src="/assets/imgs/logo1-removebg-preview.png" alt="InstaPadel" width={56} height={56} />
           </Link>
 
           <div className="nav-links-primary">

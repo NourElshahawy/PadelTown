@@ -29,7 +29,7 @@ function ReceiptImagePreview({ booking, onClose }) {
       const canvas = await html2canvas(el, { scale: 2, backgroundColor: "#0b1020" });
 
       const link = document.createElement("a");
-      link.download = `Ace Town-${booking.id}.png`;
+      link.download = `InstaPadel-${booking.id}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
     } catch {
@@ -57,7 +57,7 @@ function ReceiptImagePreview({ booking, onClose }) {
             borderRadius: "12px",
             marginTop: 20,
           }}>
-          <h2 style={{ color: "#7c3aed", margin: "0 0 4px", fontSize: 20 }}>Ace Town</h2>
+          <h2 style={{ color: "#7c3aed", margin: "0 0 4px", fontSize: 20 }}>InstaPadel</h2>
           <p style={{ color: "#94a3b8", fontSize: 12, marginBottom: 20 }}>إيصال الحجز</p>
 
           <ReceiptRow label="رقم الحجز" value={booking.displayId || booking.id} />

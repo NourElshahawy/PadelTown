@@ -5,7 +5,7 @@ export default function WizardTopbar({ currentStep, totalSteps }) {
     <>
       <div className="wizard-topbar d-flex d-lg-none">
         <Link href="/" className="brand">
-          Ace Town
+          InstaPadel
         </Link>
         <span className="wizard-mobile-step">
           الخطوة <b>{currentStep}</b> من {totalSteps}

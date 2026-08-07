@@ -3,8 +3,8 @@ import { getAllCourts } from "@/services/courtService";
 import { SITE_URL } from "@/lib/siteConfig";
 
 export const metadata = {
-  title: "ملاعب وكورتات البادل في المنصورة | Ace Town",
-  description: "ملعبين بادل احترافيين في Ace Town بالمنصورة. شوف الأسعار والمواعيد المتاحة فورًا واحجز مكانك في ثوانٍ.",
+  title: "ملاعب وكورتات البادل في المنصورة | InstaPadel",
+  description: "ملعبين بادل احترافيين في InstaPadel بالمنصورة. شوف الأسعار والمواعيد المتاحة فورًا واحجز مكانك في ثوانٍ.",
   keywords: ["ملاعب البادل", "كورت بادل المنصورة", "نادي بادل المنصورة", "Padel Club Mansoura", "Padel Court Near Me"],
 };
 

@@ -167,7 +167,7 @@ export default function BookingsTable({ initialBookings, courtIds = [] }) {
           body: JSON.stringify({
             email: rowData.customerEmail,
             userId: rowData.userId,
-            userName: rowData.customerName || "لاعب Ace Town",
+            userName: rowData.customerName || "لاعب InstaPadel",
             venueName: rowData.venueName,
             courtName: rowData.courtName,
             date: rowData.date,
