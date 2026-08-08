@@ -208,9 +208,59 @@
     color: #64dc82;
 }
 
-.owner-status-badge.pending {
+.owner-status-badge.pending,
+.owner-status-badge.pending_payment,
+.owner-status-badge.trial {
     background: rgba(255, 193, 83, .12);
     color: #ffc453;
+}
+
+.owner-status-badge.active {
+    background: rgba(100, 220, 130, .12);
+    color: #64dc82;
+}
+
+.owner-status-badge.expired,
+.owner-status-badge.rejected {
+    background: rgba(255, 107, 107, .12);
+    color: #ff6b6b;
+}
+
+/* ===== Subscription banner ===== */
+.subscription-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: var(--r-md);
+    border: 1px solid var(--border-glass);
+    margin-bottom: 20px;
+    font-size: .88rem;
+}
+
+.subscription-banner.tone-info {
+    background: rgba(120, 170, 255, .08);
+    border-color: rgba(120, 170, 255, .25);
+}
+
+.subscription-banner.tone-warning {
+    background: rgba(255, 193, 83, .08);
+    border-color: rgba(255, 193, 83, .3);
+}
+
+.subscription-banner.tone-danger {
+    background: rgba(255, 107, 107, .08);
+    border-color: rgba(255, 107, 107, .3);
+}
+
+.subscription-banner-text {
+    color: var(--white);
+}
+
+.subscription-banner-text b {
+    font-weight: 700;
 }
 
 /* ===== Venue court rows (تعديل سعر) ===== */

@@ -1,5 +1,13 @@
 -- InstaPadel — database schema, ported from PadelGo (InstaPadel) project.
--- Run this in the InstaPadel project's Supabase SQL Editor (then storage_setup.sql).
+--
+-- For a fresh project, run in this exact order:
+--   1. schema.sql (this file)
+--   2. storage_setup.sql
+--   3. 002_add_sport_type.sql
+--   4. 003_profile_creation_trigger.sql (superseded by 005, but harmless to run)
+--   5. 004_multitenancy_security_fixes.sql
+--   6. 005_owner_subscriptions.sql (overrides some of this file's venues/courts
+--      policies and handle_new_user() — run it last)
 --
 -- Fixed vs. the raw "Schema Visualizer" export:
 --   - `ARRAY` is not a valid standalone type; changed to `text[]` (amenities, images)
@@ -10,8 +18,9 @@
 --
 -- All 3 functions (email_exists, get_court_booking_count, is_admin) and all
 -- 59 RLS policies across the 15 tables are included below, pulled from
--- PadelGo's pg_policies/pg_proc catalogs. This file is complete and should
--- run start to finish with no manual edits needed.
+-- PadelGo's pg_policies/pg_proc catalogs. This file matches PadelGo's schema
+-- as originally ported; later-numbered files layer InstaPadel-specific
+-- changes on top (multi-sport, security fixes, subscriptions).
 
 create extension if not exists pgcrypto;
 
