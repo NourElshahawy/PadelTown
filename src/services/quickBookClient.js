@@ -28,8 +28,10 @@ export async function getAvailableCourtsForSlots(slots, sportType = "all") {
   const courtIds = allCourts.map((c) => c.courtId);
   const dates = [...new Set(slots.map((s) => s.date))];
 
+  // booking_slots مش bookings عن قصد — الصفحة الرئيسية بتتفتح لأي زائر، وbooking_slots
+  // معمول له trigger يزامنه من bookings بس من غير بيانات العميل/السعر/إثبات الدفع.
   const [{ data: booked }, { data: blocked }] = await Promise.all([
-    supabase.from("bookings").select("court_id, date, time").in("court_id", courtIds).in("date", dates).in("status", ["confirmed", "completed"]),
+    supabase.from("booking_slots").select("court_id, date, time").in("court_id", courtIds).in("date", dates).in("status", ["confirmed", "completed"]),
     supabase.from("blocked_slots").select("court_id, date, time").in("court_id", courtIds).in("date", dates),
   ]);
 

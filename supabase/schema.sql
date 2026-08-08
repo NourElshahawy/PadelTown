@@ -359,9 +359,6 @@ CREATE POLICY "Authenticated users can view slot status" ON public.booking_slots
 CREATE POLICY "Admins can view all bookings" ON public.bookings AS PERMISSIVE FOR SELECT TO public
   USING (is_admin());
 
-CREATE POLICY "Authenticated users can view slot availability" ON public.bookings AS PERMISSIVE FOR SELECT TO authenticated
-  USING (true);
-
 CREATE POLICY "Owners can update bookings on their courts" ON public.bookings AS PERMISSIVE FOR UPDATE TO public
   USING ((EXISTS ( SELECT 1
    FROM (courts
@@ -548,9 +545,6 @@ CREATE POLICY "Admins can view all venues" ON public.venues AS PERMISSIVE FOR SE
 CREATE POLICY "Anyone can view approved venues" ON public.venues AS PERMISSIVE FOR SELECT TO public
   USING ((status = 'approved'::text));
 
-CREATE POLICY "Enable read access for all users" ON public.venues AS PERMISSIVE FOR SELECT TO public
-  USING (true);
-
 CREATE POLICY "Owners can insert own venues" ON public.venues AS PERMISSIVE FOR INSERT TO public
   WITH CHECK ((auth.uid() = owner_id));
 
@@ -584,3 +578,37 @@ end;
 $function$;
 
 CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION handle_new_user();
+
+-- ============================================================
+-- booking_slots sync (multi-tenancy fix — see 004_multitenancy_security_fixes.sql
+-- for the full explanation). Keeps a narrow, safe-to-expose-broadly mirror
+-- of bookings (court_id/date/time/status only, no customer data) so public
+-- availability checks don't need broad read access to the real bookings table.
+-- ============================================================
+
+CREATE OR REPLACE FUNCTION public.sync_booking_slot()
+ RETURNS trigger
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+AS $function$
+BEGIN
+  IF NEW.court_id IS NULL THEN
+    RETURN NEW;
+  END IF;
+
+  IF TG_OP = 'INSERT' THEN
+    INSERT INTO public.booking_slots (booking_id, court_id, date, time, status, group_id)
+    VALUES (NEW.id, NEW.court_id, NEW.date, NEW.time, NEW.status, NEW.group_id);
+  ELSIF TG_OP = 'UPDATE' THEN
+    UPDATE public.booking_slots
+    SET status = NEW.status
+    WHERE booking_id = NEW.id;
+  END IF;
+
+  RETURN NEW;
+END;
+$function$;
+
+CREATE TRIGGER on_booking_change
+AFTER INSERT OR UPDATE ON public.bookings
+FOR EACH ROW EXECUTE FUNCTION public.sync_booking_slot();

@@ -26,10 +26,15 @@ export async function getAllCourts({ date } = {}) {
     }),
   );
 
+  // بنقرا من booking_slots مش bookings هنا عن قصد: الصفحة دي بتتفتح لأي زائر
+  // (حتى من غير تسجيل دخول)، وbooking_slots معمول له trigger يزامنه من bookings
+  // لكنه بس فيه court_id/date/time/status — من غير بيانات العميل أو السعر أو
+  // إثبات الدفع. bookings نفسها بقى RLS عليها مقفول على صاحب الحجز/صاحب
+  // الملعب بس (راجع 004_multitenancy_security_fixes.sql).
   let bookingsForDate = [];
   if (date) {
     const { data } = await supabase
-      .from("bookings")
+      .from("booking_slots")
       .select("court_id, time")
       .in("court_id", allCourtIds.length ? allCourtIds : ["00000000-0000-0000-0000-000000000000"])
       .eq("date", date)
@@ -124,9 +129,11 @@ export async function getCourtDetails(slug) {
   const supabase = await createClient();
   const { data: venue } = await supabase.from("venues").select("*, courts(*)").eq("id", court.venueId).single();
 
+  // booking_slots مش bookings — نفس السبب اللي فوق في getAllCourts (صفحة عامة،
+  // من غير تسجيل دخول أحيانًا؛ booking_slots ماله غير الأوقات المحجوزة بس).
   const courtIds = (venue?.courts || []).map((c) => c.id);
   const { data: bookings } = await supabase
-    .from("bookings")
+    .from("booking_slots")
     .select("court_id, date, time")
     .in("court_id", courtIds.length ? courtIds : ["00000000-0000-0000-0000-000000000000"])
     .in("status", ["confirmed", "completed"]);
