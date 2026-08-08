@@ -7,7 +7,9 @@
 --   4. 003_profile_creation_trigger.sql (superseded by 005, but harmless to run)
 --   5. 004_multitenancy_security_fixes.sql
 --   6. 005_owner_subscriptions.sql (overrides some of this file's venues/courts
---      policies and handle_new_user() — run it last)
+--      policies and handle_new_user())
+--   7. 006_trial_abuse_prevention.sql (overrides handle_new_user() again —
+--      run it last)
 --
 -- Fixed vs. the raw "Schema Visualizer" export:
 --   - `ARRAY` is not a valid standalone type; changed to `text[]` (amenities, images)

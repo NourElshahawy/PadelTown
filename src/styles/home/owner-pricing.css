@@ -1,0 +1,81 @@
+.owner-pricing-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--r-lg);
+    padding: 36px 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform .4s var(--ease), border-color .4s var(--ease);
+}
+
+.owner-pricing-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+}
+
+.owner-pricing-card.is-featured {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.owner-pricing-badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: .76rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: var(--r-pill);
+    margin-bottom: 16px;
+    width: fit-content;
+}
+
+.owner-pricing-title {
+    font-size: 1.3rem;
+    color: var(--white);
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.owner-pricing-amount {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.owner-pricing-amount span {
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.owner-pricing-desc {
+    color: var(--text-muted);
+    font-size: .92rem;
+    margin-bottom: 20px;
+}
+
+.owner-pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.owner-pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .88rem;
+    color: var(--white);
+}
+
+.owner-pricing-features i {
+    color: var(--accent);
+}

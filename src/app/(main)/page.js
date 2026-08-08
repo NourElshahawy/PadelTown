@@ -3,6 +3,7 @@ import FeaturedCourts from "@/components/home/FeaturedCourts";
 import NewsSection from "@/components/home/NewsSection";
 import CtaBand from "@/components/home/CtaBand";
 import WhyUs from "@/components/home/WhyUs";
+import OwnerPricingSection from "@/components/home/OwnerPricingSection";
 
 export const metadata = {
   title: "حجز ملعب بادل في المنصورة | InstaPadel",
@@ -28,6 +29,7 @@ export default function HomePage() {
       <CtaBand />
       <NewsSection />
       <WhyUs />
+      <OwnerPricingSection />
     </>
   );
 }
