@@ -36,7 +36,7 @@ export default function OwnerPricingSection() {
               <span className="owner-pricing-badge">الاشتراك الشهري</span>
               <h3 className="owner-pricing-title">سعر ثابت واحد</h3>
               <p className="owner-pricing-amount">
-                XXX ج.م <span>/ الشهر</span>
+                1500 ج.م <span>/ الشهر</span>
               </p>
               <p className="owner-pricing-desc">كل حاجة محتاجها عشان تدير ملاعبك أونلاين، من غير عمولة على كل حجز.</p>
               <ul className="owner-pricing-features">
