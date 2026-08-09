@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useStickyNavbar } from "@/hooks/useStickyNavbar";
 import { useAuth } from "@/hooks/useAuth";
 import { useNotifications } from "@/hooks/useNotifications";
@@ -10,6 +9,7 @@ import { useRouter } from "next/navigation";
 import ProfileMenu from "./ProfileMenu";
 import ThemeToggle from "./ThemeToggle";
 import NotificationBell from "./NotificationBell";
+import BrandLogo from "./BrandLogo";
 // import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
@@ -41,7 +41,7 @@ export default function Navbar() {
     <header className={`navbar-ph ${isScrolled ? "is-scrolled" : ""}`}>
       <div className="container d-flex align-items-center justify-content-between">
         <Link href="/" className="brand">
-          <Image src="/assets/imgs/logo1-removebg-preview.png" alt="PadelTown" width={56} height={56} priority />
+          <BrandLogo />
         </Link>
 
         <nav className={`nav-links ${isOpen ? "is-open" : ""}`} id="navLinks">
@@ -50,7 +50,7 @@ export default function Navbar() {
           </button>
 
           <Link href="/" className="brand logo-mobil" onClick={closeMenu}>
-            <Image src="/assets/imgs/logo1-removebg-preview.png" alt="PadelTown" width={56} height={56} />
+            <BrandLogo />
           </Link>
 
           <div className="nav-links-primary">
