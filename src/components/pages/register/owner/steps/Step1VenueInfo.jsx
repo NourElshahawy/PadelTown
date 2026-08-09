@@ -1,3 +1,5 @@
+import { EGYPT_CITIES } from "@/lib/egyptCities";
+
 export default function Step1VenueInfo({ venue, updateVenue }) {
   const phoneValid = !venue.phone || /^01[0125]\d{8}$/.test(venue.phone.trim());
   const emailValid = !venue.email || /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(venue.email.trim());
@@ -30,6 +32,23 @@ export default function Step1VenueInfo({ venue, updateVenue }) {
         <div className="field-input-wrap">
           <i className="fa-solid fa-map field-icon"></i>
           <input className="field-input" type="text" placeholder="اسم الشارع، رقم المبنى…" value={venue.address} onChange={(e) => updateVenue({ address: e.target.value })} />
+        </div>
+      </div>
+
+      <div className="field-group">
+        <label>المدينة</label>
+        <div className="field-input-wrap">
+          <i className="fa-solid fa-city field-icon"></i>
+          <select className="field-input" value={venue.city} onChange={(e) => updateVenue({ city: e.target.value })} required>
+            <option value="" disabled>
+              اختر المدينة
+            </option>
+            {EGYPT_CITIES.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 

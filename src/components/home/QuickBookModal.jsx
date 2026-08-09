@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import { getAvailableCourtsForSlots } from "@/services/quickBookClient";
 import { createBookingWithDeposit } from "@/services/depositBookingClient";
+import DemoBookingNotice from "@/components/pages/booking/DemoBookingNotice";
 
 const INSTAPAY_NUMBER = "01065801252";
 
@@ -19,6 +20,15 @@ export default function QuickBookModal({ slots, sportType = "all", onClose }) {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [copied, setCopied] = useState(false);
   const [confirming, setConfirming] = useState(false);
+  const [demoCourt, setDemoCourt] = useState(null);
+
+  const handleCourtClick = (c) => {
+    if (c.isDemo) {
+      setDemoCourt(c);
+      return;
+    }
+    setSelectedCourt(c);
+  };
 
   const first = slots[0];
   const last = slots[slots.length - 1];
@@ -201,12 +211,13 @@ export default function QuickBookModal({ slots, sportType = "all", onClose }) {
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <b>{c.venueName}</b>
                     {c.sportTypeLabel && <span className="quick-book-sport-badge">{c.sportTypeLabel}</span>}
+                    {c.isDemo && <span className="quick-book-sport-badge quick-book-demo-badge">تجريبي</span>}
                   </div>
                   <div style={{ fontSize: ".8rem", color: "var(--text-muted)" }}>{c.courtName}</div>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <span style={{ color: "var(--accent)", fontWeight: 700 }}>{c.totalPrice} ج.م</span>
-                  <button className="btn btn-accent btn-sm" onClick={() => setSelectedCourt(c)}>
+                  <button className="btn btn-accent btn-sm" onClick={() => handleCourtClick(c)}>
                     احجزه
                   </button>
                 </div>
@@ -215,6 +226,7 @@ export default function QuickBookModal({ slots, sportType = "all", onClose }) {
           </div>
         )}
       </div>
+      {demoCourt && <DemoBookingNotice onClose={() => setDemoCourt(null)} />}
     </div>,
     document.body,
   );

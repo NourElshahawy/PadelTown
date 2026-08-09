@@ -10,7 +10,9 @@
 --      policies and handle_new_user())
 --   7. 006_trial_abuse_prevention.sql (overrides handle_new_user() again)
 --   8. 007_remove_owner_status.sql (drops profiles.owner_status, overrides
---      handle_new_user() one more time — run it last)
+--      handle_new_user() one more time)
+--   9. 008_demo_venues.sql (adds is_demo/is_hidden/city to venues, overrides
+--      venues/courts/bookings policies again, seeds the demo venues — run it last)
 --
 -- Fixed vs. the raw "Schema Visualizer" export:
 --   - `ARRAY` is not a valid standalone type; changed to `text[]` (amenities, images)

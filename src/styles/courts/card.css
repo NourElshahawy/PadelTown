@@ -110,6 +110,20 @@
     font-weight: 700;
 }
 
+.court-badge-demo {
+    position: absolute;
+    top: 56px;
+    left: 14px;
+    z-index: 2;
+    background: #f5a623;
+    color: #241300;
+    border-radius: var(--r-pill);
+    padding: 6px 12px;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+}
+
 .court-price-tag {
     position: absolute;
     bottom: 14px;

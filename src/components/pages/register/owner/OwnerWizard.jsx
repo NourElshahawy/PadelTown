@@ -19,7 +19,7 @@ export default function OwnerWizard() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
 
-  const [venue, setVenue] = useState({ name: "", address: "", phone: "", email: "", description: "" });
+  const [venue, setVenue] = useState({ name: "", address: "", city: "", phone: "", email: "", description: "" });
   const [courts, setCourts] = useState([{ id: nextCourtId++, name: "", type: "regular", sportType: "padel", price: "" }]);
   const [photosByCourtId, setPhotosByCourtId] = useState({});
   const [amenities, setAmenities] = useState([]);
@@ -53,7 +53,7 @@ export default function OwnerWizard() {
   const isValidEgyptianPhone = (phone) => /^01[0125]\d{8}$/.test(phone.trim());
 
   const canGoNext = () => {
-    if (currentStep === 1) return venue.name.trim().length >= 2 && isValidEgyptianPhone(venue.phone) && isValidEmail(venue.email);
+    if (currentStep === 1) return venue.name.trim().length >= 2 && isValidEgyptianPhone(venue.phone) && isValidEmail(venue.email) && !!venue.city;
     if (currentStep === 2) return courts.every((c) => c.name.trim() && c.price);
     return true;
   };

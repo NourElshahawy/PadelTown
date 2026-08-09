@@ -35,7 +35,7 @@ export default async function CourtsPage({ searchParams }) {
         address: {
           "@type": "PostalAddress",
           streetAddress: court.location,
-          addressLocality: "المنصورة",
+          addressLocality: court.city || "المنصورة",
           addressCountry: "EG",
         },
         url: `${SITE_URL}/booking/${court.slug}?subCourtId=${court.subCourtId}`,

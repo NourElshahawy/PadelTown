@@ -8,11 +8,12 @@ export async function getAllCourts({ date } = {}) {
     .from("venues")
     .select(
       `
-      id, name, address, phone, description, amenities,
+      id, name, address, city, phone, description, amenities, is_demo,
       courts (id, name, type, sport_type, price_per_hour, images)
     `,
     )
-    .eq("status", "approved");
+    .eq("status", "approved")
+    .eq("is_hidden", false);
 
   if (error) throw error;
 
@@ -76,7 +77,9 @@ export async function getAllCourts({ date } = {}) {
           venueId: venue.id,
           image: court.images?.[0] || "/assets/imgs/courts-bg.png",
           location: venue.address,
+          city: venue.city,
           locationLink: null,
+          isDemo: !!venue.is_demo,
           isLive: true,
           rating: avgRating ? Number(avgRating) : 0,
           reviewCount: courtRatings.length,
@@ -98,7 +101,12 @@ export async function getAllCourts({ date } = {}) {
 export async function getAllCourtsFlat() {
   const supabase = await createClient();
 
-  const { data: venues, error } = await supabase.from("venues").select("id, name, address, courts(id, name, price_per_hour, images)").eq("status", "approved");
+  const { data: venues, error } = await supabase
+    .from("venues")
+    .select("id, name, address, courts(id, name, price_per_hour, images)")
+    .eq("status", "approved")
+    .eq("is_hidden", false)
+    .eq("is_demo", false);
 
   if (error) throw error;
 

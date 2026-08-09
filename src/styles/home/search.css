@@ -333,6 +333,11 @@
     font-weight: 700;
 }
 
+.quick-book-demo-badge {
+    background: #f5a623;
+    color: #241300;
+}
+
 .search-field-hint {
     display: block;
     font-size: .72rem;

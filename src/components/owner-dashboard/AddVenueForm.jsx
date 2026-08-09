@@ -3,6 +3,7 @@ import { useState } from "react";
 import { createVenue } from "@/services/ownerVenuesClient";
 import { useToast } from "@/components/shared/ToastProvider";
 import { getTypeOptionsForSport, normalizeTypeForSport } from "@/lib/courtTypeOptions";
+import { EGYPT_CITIES } from "@/lib/egyptCities";
 import SubscriptionExpiredNotice from "./SubscriptionExpiredNotice";
 
 const AMENITIES = [
@@ -16,7 +17,7 @@ const AMENITIES = [
 export default function AddVenueForm({ ownerId, onCreated, subscriptionIsLive }) {
   const { showToast } = useToast();
   const [open, setOpen] = useState(false);
-  const [venue, setVenue] = useState({ name: "", address: "", phone: "", email: "", description: "", amenities: [] });
+  const [venue, setVenue] = useState({ name: "", address: "", city: "", phone: "", email: "", description: "", amenities: [] });
   const [courts, setCourts] = useState([{ name: "", type: "regular", sportType: "padel", price: "" }]);
   const [submitting, setSubmitting] = useState(false);
 
@@ -26,7 +27,7 @@ export default function AddVenueForm({ ownerId, onCreated, subscriptionIsLive })
   const addCourtRow = () => setCourts((cs) => [...cs, { name: "", type: "regular", sportType: "padel", price: "" }]);
   const removeCourtRow = (i) => setCourts((cs) => cs.filter((_, idx) => idx !== i));
 
-  const canSubmit = venue.name.trim() && venue.phone.trim() && courts.every((c) => c.name.trim() && c.price);
+  const canSubmit = venue.name.trim() && venue.phone.trim() && venue.city && courts.every((c) => c.name.trim() && c.price);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +37,7 @@ export default function AddVenueForm({ ownerId, onCreated, subscriptionIsLive })
       const newVenue = await createVenue(ownerId, venue, courts);
       showToast("تم إضافة ملعبك بنجاح", "success");
       setOpen(false);
-      setVenue({ name: "", address: "", phone: "", email: "", description: "", amenities: [] });
+      setVenue({ name: "", address: "", city: "", phone: "", email: "", description: "", amenities: [] });
       setCourts([{ name: "", type: "regular", sportType: "padel", price: "" }]);
       onCreated?.(newVenue);
     } catch {
@@ -76,6 +77,20 @@ export default function AddVenueForm({ ownerId, onCreated, subscriptionIsLive })
             <input className="field-input phone-rtl-fix" value={venue.phone} onChange={(e) => setVenue((v) => ({ ...v, phone: e.target.value }))} required />
           </div>
         </div>
+      </div>
+
+      <div className="field-group">
+        <label>المدينة</label>
+        <select className="field-input" value={venue.city} onChange={(e) => setVenue((v) => ({ ...v, city: e.target.value }))} required>
+          <option value="" disabled>
+            اختر المدينة
+          </option>
+          {EGYPT_CITIES.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="field-group">

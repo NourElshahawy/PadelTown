@@ -15,6 +15,7 @@ import BookingSuccessToast from "./BookingSuccessToast";
 import { buildDefaultSlots, formatSlotRanges } from "@/services/courtLogic";
 import { createClient } from "@/lib/supabase/client";
 import BookingGuideModal from "./BookingGuideModal";
+import DemoBookingNotice from "./DemoBookingNotice";
 import { getEgyptISODate } from "@/services/courtLogic";
 // import "@/styles/pages/booking.css";
 
@@ -37,6 +38,7 @@ function slotSortKey(s) {
 
 export default function BookingPage({ court, preselectedSubCourtId }) {
   const [showGuide, setShowGuide] = useState(false);
+  const [showDemoNotice, setShowDemoNotice] = useState(false);
   const daysSectionRef = useRef(null);
   const slotsSectionRef = useRef(null);
   const router = useRouter();
@@ -301,6 +303,10 @@ export default function BookingPage({ court, preselectedSubCourtId }) {
 
   const handleBookNowClick = () => {
     if (!canBook) return;
+    if (court.isDemo) {
+      setShowDemoNotice(true);
+      return;
+    }
     if (currentUser === null) {
       router.push(`/login?redirect=/booking/${court.slug}`);
       return;
@@ -328,6 +334,7 @@ export default function BookingPage({ court, preselectedSubCourtId }) {
       </main>
 
       {showGuide && <BookingGuideModal onClose={() => setShowGuide(false)} />}
+      {showDemoNotice && <DemoBookingNotice onClose={() => setShowDemoNotice(false)} />}
 
       <BookingSummaryFooter date={summary.dateLabel} time={summary.time} duration={summary.duration} price={summary.total} onBookNow={handleBookNowClick} disabled={!canBook} />
 

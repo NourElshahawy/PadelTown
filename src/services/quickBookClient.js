@@ -6,7 +6,11 @@ const SPORT_LABELS = { padel: "بادل", football: "كورة قدم", tennis: "
 export async function getAvailableCourtsForSlots(slots, sportType = "all") {
   const supabase = createClient();
 
-  const { data: venues, error } = await supabase.from("venues").select("id, name, address, courts(id, name, sport_type, price_per_hour, images)").eq("status", "approved");
+  const { data: venues, error } = await supabase
+    .from("venues")
+    .select("id, name, address, is_demo, courts(id, name, sport_type, price_per_hour, images)")
+    .eq("status", "approved")
+    .eq("is_hidden", false);
   if (error) throw error;
 
   const allCourts = venues.flatMap((v) =>
@@ -21,6 +25,7 @@ export async function getAvailableCourtsForSlots(slots, sportType = "all") {
         image: c.images?.[0] || "/assets/imgs/courts-bg.png",
         sportType: c.sport_type || "padel",
         sportTypeLabel: SPORT_LABELS[c.sport_type] || SPORT_LABELS.padel,
+        isDemo: !!v.is_demo,
       })),
   );
 

@@ -14,6 +14,7 @@ export default function CourtCard({ court }) {
           <span className="pulse-dot" /> {court.isLive ? "Live" : "مغلق"}
         </span>
         {court.sportTypeLabel && <span className="court-badge-sport">{court.sportTypeLabel}</span>}
+        {court.isDemo && <span className="court-badge-demo">تجريبي</span>}
         <span className="court-rating">
           <i className="fa-solid fa-star"></i> {court.rating > 0 ? court.rating : "جديد"}
         </span>

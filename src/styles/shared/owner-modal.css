@@ -82,3 +82,27 @@
         padding: 30px 22px;
     }
 }
+
+.demo-notice-body {
+    text-align: center;
+}
+
+.demo-notice-icon {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 166, 35, .15);
+    color: #f5a623;
+    font-size: 1.4rem;
+}
+
+.demo-notice-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 22px;
+}

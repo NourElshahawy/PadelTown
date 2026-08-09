@@ -10,6 +10,7 @@ export async function createVenueWithCourts({ ownerId, venue, courts, photosByCo
       owner_id: ownerId,
       name: venue.name,
       address: venue.address,
+      city: venue.city,
       phone: venue.phone,
       email: venue.email,
       description: venue.description,
