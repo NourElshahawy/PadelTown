@@ -1,5 +1,5 @@
--- InstaPadel — CRITICAL: creates the profiles row automatically on signup.
--- Run this in the InstaPadel project's SQL Editor NOW if you haven't already.
+-- PadelTown — CRITICAL: creates the profiles row automatically on signup.
+-- Run this in the PadelTown project's SQL Editor NOW if you haven't already.
 --
 -- Without this, every new signup leaves auth.users with no matching
 -- profiles row. Several places in the app assume that row already exists

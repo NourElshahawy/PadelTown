@@ -7,7 +7,14 @@ export default function Step1VenueInfo({ venue, updateVenue }) {
       <div className="step-header">
         <span className="eyebrow">الخطوة 1 من 5</span>
         <h2 className="mt-2">أخبرنا عن مكانك</h2>
-        <p>المعلومات الأساسية التي سيراها اللاعبون عند العثور على ناديك في InstaPadel.</p>
+        <p>المعلومات الأساسية التي سيراها اللاعبون عند العثور على ناديك في PadelTown.</p>
+      </div>
+
+      <div className="trial-pricing-notice">
+        <i className="fa-solid fa-gift"></i>
+        <span>
+          <b>7 أيام تجربة مجانية</b> كاملة من غير أي بيانات دفع. بعد كده الاشتراك الشهري الثابت <b>1500 ج.م</b>، وتقدر تجدده وقتها من لوحة التحكم — ملاعبك تفضل موجودة عندك حتى لو الاشتراك خلص، بس بتختفي من نتائج البحث للاعبين لحد ما تجدد.
+        </span>
       </div>
 
       <div className="field-group">

@@ -12,7 +12,7 @@ export default function LoginPromptModal() {
   useEffect(() => {
     const check = async () => {
       try {
-        if (localStorage.getItem("instapadel_login_prompt_shown")) return;
+        if (localStorage.getItem("padeltown_login_prompt_shown")) return;
       } catch {
         return;
       }
@@ -31,7 +31,7 @@ export default function LoginPromptModal() {
 
   const markShown = () => {
     try {
-      localStorage.setItem("instapadel_login_prompt_shown", "1");
+      localStorage.setItem("padeltown_login_prompt_shown", "1");
     } catch {}
   };
 

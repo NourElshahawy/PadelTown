@@ -73,17 +73,17 @@ export default function Hero() {
       <div className="container hero-content">
         <span className="hero-badge" data-aos="fade-up">
           <Image src="/assets/imgs/logo1-removebg-preview.png" className="pulse-img" alt="" width={20} height={20} />
-          ملعب احترافي في قلب المنصورة
+          ملاعب بادل وكورة وتنس في قلب المنصورة
         </span>
 
         <h1 data-aos="fade-up" data-aos-delay="80">
           احجز ملعبك في
           <br />
-          <span className="accent-underline">InstaPadel</span>
+          <span className="accent-underline">PadelTown</span>
         </h1>
 
         <p className="hero-sub" data-aos="fade-up" data-aos-delay="160">
-          ملعبين بادل احترافيين، شوف المواعيد المتاحة فورًا واحجز مكانك في ثوانٍ.
+          ملاعب بادل وكورة وتنس احترافية، شوف المواعيد المتاحة فورًا واحجز مكانك في ثوانٍ.
         </p>
 
         <div className="search-card" data-aos="fade-up" data-aos-delay="240">

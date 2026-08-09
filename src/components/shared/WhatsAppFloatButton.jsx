@@ -1,9 +1,9 @@
 "use client";
 
-const WHATSAPP_NUMBER = "201001234567"; // ← رقم InstaPadel بصيغة دولية بدون +
+const WHATSAPP_NUMBER = "201001234567"; // ← رقم PadelTown بصيغة دولية بدون +
 
 export default function WhatsAppFloatButton() {
-  const message = encodeURIComponent("مرحبًا، عندي استفسار بخصوص InstaPadel");
+  const message = encodeURIComponent("مرحبًا، عندي استفسار بخصوص PadelTown");
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
   return (

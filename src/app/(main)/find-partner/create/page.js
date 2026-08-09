@@ -3,7 +3,7 @@ import CreatePartnerRequestForm from "@/components/pages/find-partner/CreatePart
 import { getAllCourtsFlat } from "@/services/courtService"; // ← بدل getAllCourts
 import { createClient } from "@/lib/supabase/server";
 
-export const metadata = { title: "إنشاء طلب شريك — InstaPadel" };
+export const metadata = { title: "إنشاء طلب شريك — PadelTown" };
 
 export default async function CreatePartnerRequestPage() {
   const supabase = await createClient();

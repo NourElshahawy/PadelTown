@@ -1,7 +1,7 @@
 import AuthVisual from "@/components/shared/AuthVisual";
 import ResetPasswordForm from "@/components/pages/login/ResetPasswordForm";
 
-export const metadata = { title: "إعادة تعيين كلمة المرور — InstaPadel" };
+export const metadata = { title: "إعادة تعيين كلمة المرور — PadelTown" };
 
 const FEATURES = [
   { icon: "bolt", text: "توفر المواعيد في الوقت الفعلي" },
@@ -12,7 +12,7 @@ const FEATURES = [
 export default function ResetPasswordPage() {
   return (
     <div className="auth-shell">
-      <AuthVisual heading="ملعب InstaPadel، بلمسة واحدة." features={FEATURES} />
+      <AuthVisual heading="ملعب PadelTown، بلمسة واحدة." features={FEATURES} />
       <ResetPasswordForm />
     </div>
   );

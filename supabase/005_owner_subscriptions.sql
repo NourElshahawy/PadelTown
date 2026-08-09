@@ -1,4 +1,4 @@
--- InstaPadel — owner subscription system (fixed price, manual approval).
+-- PadelTown — owner subscription system (fixed price, manual approval).
 -- Run this in the SQL Editor after 004_multitenancy_security_fixes.sql.
 --
 -- Design:

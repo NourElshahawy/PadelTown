@@ -1,5 +1,5 @@
--- InstaPadel — storage buckets + policies, ported from PadelGo.
--- Run this in the InstaPadel project's Supabase SQL Editor, after schema.sql.
+-- PadelTown — storage buckets + policies, ported from PadelGo.
+-- Run this in the PadelTown project's Supabase SQL Editor, after schema.sql.
 
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types) values ('avatars', 'avatars', true, NULL, NULL);
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types) values ('payment-proofs', 'payment-proofs', true, NULL, NULL);

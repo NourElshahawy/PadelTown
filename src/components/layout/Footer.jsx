@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="row g-4">
           <div className="col-lg-4 footer-brand" id="about">
             <Link href="/" className="brand">
-              <Image src="/assets/imgs/logo1-removebg-preview.png" alt="InstaPadel" width={56} height={56} />
+              <Image src="/assets/imgs/logo1-removebg-preview.png" alt="PadelTown" width={56} height={56} />
             </Link>
             <p>أسرع طريقة للعثور على ملعب بادل وحجزه في المنصورة — مواعيد فورية، أندية موثقة، دفع آمن.</p>
             <div className="social-row">
@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 InstaPadel. جميع الحقوق محفوظة.</span>
+          <span>© 2026 PadelTown. جميع الحقوق محفوظة.</span>
           <span>
             <Link href="/legal#terms" className="auth-link">
               شروط الخدمة

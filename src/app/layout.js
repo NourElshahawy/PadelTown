@@ -16,13 +16,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "InstaPadel | احجز ملعبك في أقل من دقيقة",
-  description: "InstaPadel — ملعبين بادل احترافيين في المنصورة. اعرف المواعيد المتاحة واحجز ملعبك بسهولة وفي ثوانٍ.",
-  applicationName: "InstaPadel",
+  title: "PadelTown | احجز ملعبك في أقل من دقيقة",
+  description: "PadelTown — ملاعب بادل وكورة وتنس في المنصورة. اعرف المواعيد المتاحة واحجز ملعبك بسهولة وفي ثوانٍ.",
+  applicationName: "PadelTown",
   openGraph: {
-    siteName: "InstaPadel",
-    title: "InstaPadel | احجز ملعبك في أقل من دقيقة",
-    description: "InstaPadel — ملعب بادل احترافي في المنصورة.",
+    siteName: "PadelTown",
+    title: "PadelTown | احجز ملعبك في أقل من دقيقة",
+    description: "PadelTown — ملاعب بادل وكورة وتنس في المنصورة.",
     url: SITE_URL,
     locale: "ar_EG",
     type: "website",

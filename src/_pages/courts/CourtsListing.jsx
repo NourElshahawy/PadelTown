@@ -64,7 +64,7 @@ export default function CourtsListing({ courts , searchFilters }) {
 // const PERIOD_LABELS = { morning: "صباحًا", noon: "ظهرًا", afternoon: "عصرًا", evening: "مساءً", night: "ليلاً" };
   return (
     <>
-      <ListingHero title="ملاعب InstaPadel" count={filteredCourts.length} breadcrumbLabel="الملاعب" />
+      <ListingHero title="ملاعب PadelTown" count={filteredCourts.length} breadcrumbLabel="الملاعب" />
       {searchFilters?.date && (
         <div className="container" style={{ marginTop: -20, marginBottom: 20 }}>
           <div style={{ background: "var(--accent-soft)", border: "1px solid rgba(0,214,143,.3)", borderRadius: "var(--r-md)", padding: "12px 18px", fontSize: ".88rem", color: "var(--white)" }}>
@@ -97,7 +97,7 @@ export default function CourtsListing({ courts , searchFilters }) {
                   ))}
                 </div>
               ) : (
-                <EmptyState title="لا توجد ملاعب تطابق هذه الفلترة" text="حاول توسيع نطاق السعر أو إلغاء أحد الفلاتر — يتم إضافة ملاعب جديدة إلى InstaPadel كل أسبوع." onClear={clearAll} />
+                <EmptyState title="لا توجد ملاعب تطابق هذه الفلترة" text="حاول توسيع نطاق السعر أو إلغاء أحد الفلاتر — يتم إضافة ملاعب جديدة إلى PadelTown كل أسبوع." onClear={clearAll} />
               )}
 
               <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />

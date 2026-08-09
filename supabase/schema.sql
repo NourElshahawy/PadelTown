@@ -1,4 +1,4 @@
--- InstaPadel — database schema, ported from PadelGo (InstaPadel) project.
+-- PadelTown — database schema, ported from PadelGo (PadelTown) project.
 --
 -- For a fresh project, run in this exact order:
 --   1. schema.sql (this file)
@@ -21,7 +21,7 @@
 -- All 3 functions (email_exists, get_court_booking_count, is_admin) and all
 -- 59 RLS policies across the 15 tables are included below, pulled from
 -- PadelGo's pg_policies/pg_proc catalogs. This file matches PadelGo's schema
--- as originally ported; later-numbered files layer InstaPadel-specific
+-- as originally ported; later-numbered files layer PadelTown-specific
 -- changes on top (multi-sport, security fixes, subscriptions).
 
 create extension if not exists pgcrypto;

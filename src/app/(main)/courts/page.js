@@ -3,9 +3,20 @@ import { getAllCourts } from "@/services/courtService";
 import { SITE_URL } from "@/lib/siteConfig";
 
 export const metadata = {
-  title: "ملاعب وكورتات البادل في المنصورة | InstaPadel",
-  description: "ملعبين بادل احترافيين في InstaPadel بالمنصورة. شوف الأسعار والمواعيد المتاحة فورًا واحجز مكانك في ثوانٍ.",
-  keywords: ["ملاعب البادل", "كورت بادل المنصورة", "نادي بادل المنصورة", "Padel Club Mansoura", "Padel Court Near Me"],
+  title: "ملاعب بادل وكورة وتنس في المنصورة | PadelTown",
+  description: "كل ملاعب البادل والكورة والتنس في المنصورة على PadelTown. شوف الأسعار والمواعيد المتاحة فورًا واحجز مكانك في ثوانٍ.",
+  keywords: [
+    "ملاعب البادل",
+    "كورت بادل المنصورة",
+    "نادي بادل المنصورة",
+    "Padel Club Mansoura",
+    "Padel Court Near Me",
+    "ملاعب كورة قدم المنصورة",
+    "حجز ملعب خماسي",
+    "ملاعب تنس المنصورة",
+    "Football Court Mansoura",
+    "Tennis Court Mansoura",
+  ],
 };
 
 export default async function CourtsPage({ searchParams }) {

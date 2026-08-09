@@ -70,7 +70,7 @@ export default function LoginForm() {
     <div className="auth-form-col">
       <div className="auth-topbar d-flex d-lg-none">
         <Link href="/" className="brand">
-          <Image src="/assets/imgs/logo1-removebg-preview.png" alt="InstaPadel" width={56} height={56} />
+          <Image src="/assets/imgs/logo1-removebg-preview.png" alt="PadelTown" width={56} height={56} />
         </Link>
       </div>
 

@@ -2,7 +2,7 @@ import NewsListing from "@/_pages/news/NewsListing";
 import { getAllNews } from "@/services/newsService";
 
 export const metadata = {
-  title: "الأخبار والبطولات — InstaPadel",
+  title: "الأخبار والبطولات — PadelTown",
   description: "آخر أخبار وتحديثات ملاعب البادل في المنصورة.",
 };
 

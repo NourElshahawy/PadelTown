@@ -59,7 +59,7 @@ export default function BookingPage({ court, preselectedSubCourtId }) {
 
   useEffect(() => {
     try {
-      if (!localStorage.getItem("instapadel_hide_booking_guide")) {
+      if (!localStorage.getItem("padeltown_hide_booking_guide")) {
         setShowGuide(true);
       }
     } catch {
@@ -272,7 +272,7 @@ export default function BookingPage({ court, preselectedSubCourtId }) {
         email: user.email,
         userId: user.id,
         courtId: subCourt.id,
-        userName: user.user_metadata?.name || "لاعب InstaPadel",
+        userName: user.user_metadata?.name || "لاعب PadelTown",
         venueName: court.name,
         courtName: subCourt.name,
         date: summary.dateLabel,

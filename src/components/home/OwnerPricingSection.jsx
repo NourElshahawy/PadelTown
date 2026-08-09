@@ -7,7 +7,7 @@ export default function OwnerPricingSection() {
       <div className="container">
         <div className="text-center mx-auto" style={{ maxWidth: 620 }} data-aos="fade-up">
           <span className="eyebrow justify-content-center">لأصحاب الملاعب</span>
-          <h2 className="section-title mt-3">سجّل ملعبك على InstaPadel</h2>
+          <h2 className="section-title mt-3">سجّل ملعبك على PadelTown</h2>
           <p className="section-sub mx-auto mt-3">إدارة كاملة لملاعبك وحجوزاتك من مكان واحد، بسعر ثابت وبساطة تسجيل حساب.</p>
         </div>
 

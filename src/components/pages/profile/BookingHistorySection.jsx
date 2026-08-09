@@ -84,7 +84,7 @@ export default function BookingHistorySection({ bookings: initialBookings, curre
           body: JSON.stringify({
             email: user?.email,
             userId: user?.id,
-            userName: "لاعب InstaPadel",
+            userName: "لاعب PadelTown",
             venueName: first.venue_name,
             courtName: first.court_name,
             date: first.date,

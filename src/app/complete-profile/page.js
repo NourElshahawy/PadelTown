@@ -2,7 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import CompleteProfileForm from "@/components/shared/CompleteProfileForm";
 
-export const metadata = { title: "أكمل بياناتك — InstaPadel" };
+export const metadata = { title: "أكمل بياناتك — PadelTown" };
 
 export default async function CompleteProfilePage({ searchParams }) {
   const sp = await searchParams;

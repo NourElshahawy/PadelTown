@@ -3,4 +3,4 @@ import { FROM_EMAIL_ADDRESS } from "./siteConfig";
 
 export const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
-export const FROM_EMAIL = `InstaPadel <${FROM_EMAIL_ADDRESS}>`;
+export const FROM_EMAIL = `PadelTown <${FROM_EMAIL_ADDRESS}>`;

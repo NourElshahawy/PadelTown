@@ -1,4 +1,4 @@
--- InstaPadel — multi-tenancy security audit fixes.
+-- PadelTown — multi-tenancy security audit fixes.
 -- Run this in the SQL Editor. Two real cross-tenant leaks found, both at the
 -- RLS layer (the app's own queries were already correctly scoped — these are
 -- gaps that let anyone bypass the UI entirely via a direct Supabase call).

@@ -1,4 +1,4 @@
--- InstaPadel — shorten the free trial and close the repeat-trial loophole.
+-- PadelTown — shorten the free trial and close the repeat-trial loophole.
 -- Run this in the SQL Editor after 005_owner_subscriptions.sql.
 --
 -- Two changes to handle_new_user():

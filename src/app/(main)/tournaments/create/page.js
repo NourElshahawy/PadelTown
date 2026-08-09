@@ -5,7 +5,7 @@ import { getAllCourts } from "@/services/courtService";
 import { getAllCourtsFlat } from "@/services/courtService";
 import { createTournament } from "@/services/tournamentClient";
 
-export const metadata = { title: "إنشاء بطولة جديدة — InstaPadel" };
+export const metadata = { title: "إنشاء بطولة جديدة — PadelTown" };
 
 export default async function CreateTournamentPage() {
   const supabase = await createClient();

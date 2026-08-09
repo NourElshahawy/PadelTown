@@ -1,4 +1,4 @@
--- Run these THREE queries against PadelGo (InstaPadel)'s Supabase SQL Editor,
+-- Run these THREE queries against PadelGo (PadelTown)'s Supabase SQL Editor,
 -- one at a time. Each returns a single text blob — copy the result and paste
 -- it back. This pulls RLS policies + function bodies via Postgres' system
 -- catalogs, so it works even without a direct DB connection.

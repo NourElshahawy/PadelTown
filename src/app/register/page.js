@@ -3,7 +3,7 @@ import RegisterForm from "@/_pages/register/RegisterForm";
 // import "@/styles/pages/register.css";
 
 export const metadata = {
-  title: "إنشاء حساب — InstaPadel",
+  title: "إنشاء حساب — PadelTown",
 };
 
 const FEATURES = [

@@ -77,7 +77,7 @@ export default function Step5Review({ venue, courts, amenities, cancellationPoli
         <label htmlFor="agreeTerms">
           أؤكد أن جميع المعلومات دقيقة وأوافق على{" "}
           <a href="/legal" className="auth-link">
-            شروط InstaPadel لأصحاب الملاعب
+            شروط PadelTown لأصحاب الملاعب
           </a>
           .
         </label>

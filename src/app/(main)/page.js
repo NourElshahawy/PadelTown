@@ -6,8 +6,8 @@ import WhyUs from "@/components/home/WhyUs";
 import OwnerPricingSection from "@/components/home/OwnerPricingSection";
 
 export const metadata = {
-  title: "حجز ملعب بادل في المنصورة | InstaPadel",
-  description: "احجز ملعبك في InstaPadel أونلاين في ثوانٍ. ملعبين بادل احترافيين في المنصورة، شوف المواعيد المتاحة فورًا واحجز مكانك بدفع آمن.",
+  title: "حجز ملاعب بادل وكورة وتنس في المنصورة | PadelTown",
+  description: "احجز ملعبك في PadelTown أونلاين في ثوانٍ — بادل، كورة قدم، وتنس في المنصورة. شوف المواعيد المتاحة فورًا واحجز مكانك بدفع آمن.",
   keywords: [
     "حجز ملعب بادل المنصورة",
     "ملاعب بادل المنصورة",
@@ -18,6 +18,13 @@ export const metadata = {
     "أقرب ملعب بادل من موقعي",
     "Padel Mansoura",
     "Padel Courts Mansoura",
+    "حجز ملعب كورة المنصورة",
+    "ملاعب كورة قدم المنصورة",
+    "حجز ملعب خماسي المنصورة",
+    "Football Court Mansoura",
+    "حجز ملعب تنس المنصورة",
+    "ملاعب تنس المنصورة",
+    "Tennis Court Mansoura",
   ],
 };
 export default function HomePage() {
