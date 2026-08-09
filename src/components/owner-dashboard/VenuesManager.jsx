@@ -4,7 +4,7 @@ import AddCourtForm from "./AddCourtForm";
 import EditCourtModal from "./EditCourtModal";
 import AddVenueForm from "./AddVenueForm";
 
-export default function VenuesManager({ venues, ownerId }) {
+export default function VenuesManager({ venues, ownerId, subscriptionIsLive }) {
   const [localVenues, setLocalVenues] = useState(venues);
   const [editingCourt, setEditingCourt] = useState(null); // { venueId, court }
 
@@ -49,7 +49,7 @@ export default function VenuesManager({ venues, ownerId }) {
             </div>
           ))}
 
-          <AddCourtForm venueId={venue.id} onAdded={(newCourt) => handleCourtAdded(venue.id, newCourt)} />
+          <AddCourtForm venueId={venue.id} onAdded={(newCourt) => handleCourtAdded(venue.id, newCourt)} subscriptionIsLive={subscriptionIsLive} />
         </div>
       ))}
 
@@ -61,12 +61,13 @@ export default function VenuesManager({ venues, ownerId }) {
           onClose={() => setEditingCourt(null)}
           onSaved={(updated) => handleCourtSaved(editingCourt.venueId, updated)}
           onVenueAddressSaved={(address) => handleVenueAddressSaved(editingCourt.venueId, address)}
+          subscriptionIsLive={subscriptionIsLive}
         />
       )}
 
       <div style={{ marginTop: 24, paddingTop: 24, borderTop: "1px solid var(--border-glass)" }}>
         <p style={{ color: "var(--text-faint)", fontSize: ".82rem", marginBottom: 10 }}>عندك نادي في مكان مختلف تمامًا (مش امتداد لنادٍ موجود)؟</p>
-        <AddVenueForm ownerId={ownerId} onCreated={handleVenueCreated} />
+        <AddVenueForm ownerId={ownerId} onCreated={handleVenueCreated} subscriptionIsLive={subscriptionIsLive} />
       </div>
     </>
   );

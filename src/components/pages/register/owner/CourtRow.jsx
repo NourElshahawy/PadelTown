@@ -1,3 +1,5 @@
+import { getTypeOptionsForSport, normalizeTypeForSport } from "@/lib/courtTypeOptions";
+
 export default function CourtRow({ court, index, onChange, onRemove, canRemove }) {
   return (
     <div className="court-row">
@@ -25,7 +27,10 @@ export default function CourtRow({ court, index, onChange, onRemove, canRemove }
             <label>الرياضة</label>
             <div className="field-input-wrap">
               <i className="fa-solid fa-person-running field-icon"></i>
-              <select className="field-input" value={court.sportType || "padel"} onChange={(e) => onChange({ ...court, sportType: e.target.value })}>
+              <select
+                className="field-input"
+                value={court.sportType || "padel"}
+                onChange={(e) => onChange({ ...court, sportType: e.target.value, type: normalizeTypeForSport(court.type, e.target.value) })}>
                 <option value="padel">بادل</option>
                 <option value="football">كورة قدم</option>
                 <option value="tennis">تنس</option>
@@ -39,10 +44,11 @@ export default function CourtRow({ court, index, onChange, onRemove, canRemove }
             <div className="field-input-wrap">
               <i className="fa-solid fa-layer-group field-icon"></i>
               <select className="field-input" value={court.type} onChange={(e) => onChange({ ...court, type: e.target.value })}>
-                <option value="regular">عادي</option>
-                <option value="panoramic">بانوراما</option>
-                <option value="indoor">مغطى</option>
-                <option value="outdoor">مكشوف</option>
+                {getTypeOptionsForSport(court.sportType || "padel").map((t) => (
+                  <option key={t.value} value={t.value}>
+                    {t.label}
+                  </option>
+                ))}
               </select>
             </div>
           </div>

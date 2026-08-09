@@ -11,7 +11,7 @@ export async function GET(request) {
 
     if (!error) {
       const { data: { user } } = await supabase.auth.getUser();
-      const { data: profile } = await supabase.from("profiles").select("role, owner_status, avatar_url, phone").eq("id", user.id).single();
+      const { data: profile } = await supabase.from("profiles").select("role, avatar_url, phone").eq("id", user.id).single();
 
       const destination = profile?.role === "owner" ? "/owner/dashboard" : "/";
 

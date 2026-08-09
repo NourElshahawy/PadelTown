@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { updateCourt, updateVenueAddress } from "@/services/ownerVenuesClient";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
+import { getTypeOptionsForSport, normalizeTypeForSport } from "@/lib/courtTypeOptions";
+import SubscriptionExpiredNotice from "./SubscriptionExpiredNotice";
 import "../../styles/shared/owner-modal.css";
 
-export default function EditCourtModal({ court, venueId, venueAddress, onClose, onSaved, onVenueAddressSaved }) {
+export default function EditCourtModal({ court, venueId, venueAddress, onClose, onSaved, onVenueAddressSaved, subscriptionIsLive }) {
   useLockBodyScroll(true);
   const [name, setName] = useState(court.name);
   const [type, setType] = useState(court.type || "regular");
@@ -74,7 +76,13 @@ export default function EditCourtModal({ court, venueId, venueAddress, onClose, 
               </div>
               <div className="col-md-6">
                 <label className="edit-court-label">الرياضة</label>
-                <select className="field-input" value={sportType} onChange={(e) => setSportType(e.target.value)}>
+                <select
+                  className="field-input"
+                  value={sportType}
+                  onChange={(e) => {
+                    setSportType(e.target.value);
+                    setType((prev) => normalizeTypeForSport(prev, e.target.value));
+                  }}>
                   <option value="padel">بادل</option>
                   <option value="football">كورة قدم</option>
                   <option value="tennis">تنس</option>
@@ -83,10 +91,11 @@ export default function EditCourtModal({ court, venueId, venueAddress, onClose, 
               <div className="col-md-6">
                 <label className="edit-court-label">النوع</label>
                 <select className="field-input" value={type} onChange={(e) => setType(e.target.value)}>
-                  <option value="regular">عادي</option>
-                  <option value="panoramic">بانوراما</option>
-                  <option value="indoor">مغطى</option>
-                  <option value="outdoor">مكشوف</option>
+                  {getTypeOptionsForSport(sportType).map((t) => (
+                    <option key={t.value} value={t.value}>
+                      {t.label}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="col-md-6">
@@ -139,6 +148,11 @@ export default function EditCourtModal({ court, venueId, venueAddress, onClose, 
               </div>
 
               {error && <p style={{ color: "#ff6b6b", fontSize: ".82rem", marginTop: 4 }}>{error}</p>}
+              {subscriptionIsLive === false && (
+                <div className="col-12">
+                  <SubscriptionExpiredNotice />
+                </div>
+              )}
 
               <div className="col-12" style={{ display: "flex", gap: 8, marginTop: 10 }}>
                 <button type="submit" className="owner-btn-save" disabled={saving}>

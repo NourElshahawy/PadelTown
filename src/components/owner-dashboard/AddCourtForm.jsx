@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
 import { addCourtToVenue } from "@/services/ownerVenuesClient";
+import { getTypeOptionsForSport, normalizeTypeForSport } from "@/lib/courtTypeOptions";
+import SubscriptionExpiredNotice from "./SubscriptionExpiredNotice";
 
-export default function AddCourtForm({ venueId, onAdded }) {
+export default function AddCourtForm({ venueId, onAdded, subscriptionIsLive }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [type, setType] = useState("regular");
@@ -58,7 +60,13 @@ export default function AddCourtForm({ venueId, onAdded }) {
           <input className="field-input" placeholder="اسم الملعب" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
         <div className="col-md-6">
-          <select className="field-input" value={sportType} onChange={(e) => setSportType(e.target.value)}>
+          <select
+            className="field-input"
+            value={sportType}
+            onChange={(e) => {
+              setSportType(e.target.value);
+              setType((prev) => normalizeTypeForSport(prev, e.target.value));
+            }}>
             <option value="padel">بادل</option>
             <option value="football">كورة قدم</option>
             <option value="tennis">تنس</option>
@@ -66,10 +74,11 @@ export default function AddCourtForm({ venueId, onAdded }) {
         </div>
         <div className="col-md-6">
           <select className="field-input" value={type} onChange={(e) => setType(e.target.value)}>
-            <option value="regular">عادي</option>
-            <option value="panoramic">بانوراما</option>
-            <option value="indoor">مغطى</option>
-            <option value="outdoor">مكشوف</option>
+            {getTypeOptionsForSport(sportType).map((t) => (
+              <option key={t.value} value={t.value}>
+                {t.label}
+              </option>
+            ))}
           </select>
         </div>
         <div className="col-md-6">
@@ -96,6 +105,7 @@ export default function AddCourtForm({ venueId, onAdded }) {
           )}
         </div>
       </div>
+      {subscriptionIsLive === false && <SubscriptionExpiredNotice />}
       <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
         <button type="submit" className="owner-btn-save" disabled={submitting}>
           {submitting ? "جاري الإضافة…" : "إضافة"}

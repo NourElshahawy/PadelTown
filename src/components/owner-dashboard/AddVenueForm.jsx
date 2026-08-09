@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { createVenue } from "@/services/ownerVenuesClient";
 import { useToast } from "@/components/shared/ToastProvider";
+import { getTypeOptionsForSport, normalizeTypeForSport } from "@/lib/courtTypeOptions";
+import SubscriptionExpiredNotice from "./SubscriptionExpiredNotice";
 
 const AMENITIES = [
   { value: "parking", label: "موقف سيارات" },
@@ -11,7 +13,7 @@ const AMENITIES = [
   { value: "wifi", label: "واي فاي" },
 ];
 
-export default function AddVenueForm({ ownerId, onCreated }) {
+export default function AddVenueForm({ ownerId, onCreated, subscriptionIsLive }) {
   const { showToast } = useToast();
   const [open, setOpen] = useState(false);
   const [venue, setVenue] = useState({ name: "", address: "", phone: "", email: "", description: "", amenities: [] });
@@ -97,7 +99,10 @@ export default function AddVenueForm({ ownerId, onCreated }) {
                 <input className="field-input" placeholder="اسم الملعب" value={c.name} onChange={(e) => updateCourt(i, { name: e.target.value })} required />
               </div>
               <div className="col-md-6">
-                <select className="field-input" value={c.sportType || "padel"} onChange={(e) => updateCourt(i, { sportType: e.target.value })}>
+                <select
+                  className="field-input"
+                  value={c.sportType || "padel"}
+                  onChange={(e) => updateCourt(i, { sportType: e.target.value, type: normalizeTypeForSport(c.type, e.target.value) })}>
                   <option value="padel">بادل</option>
                   <option value="football">كورة قدم</option>
                   <option value="tennis">تنس</option>
@@ -105,10 +110,11 @@ export default function AddVenueForm({ ownerId, onCreated }) {
               </div>
               <div className="col-md-6">
                 <select className="field-input" value={c.type} onChange={(e) => updateCourt(i, { type: e.target.value })}>
-                  <option value="regular">عادي</option>
-                  <option value="panoramic">بانوراما</option>
-                  <option value="indoor">مغطى</option>
-                  <option value="outdoor">مكشوف</option>
+                  {getTypeOptionsForSport(c.sportType || "padel").map((t) => (
+                    <option key={t.value} value={t.value}>
+                      {t.label}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="col-12">
@@ -127,9 +133,10 @@ export default function AddVenueForm({ ownerId, onCreated }) {
         </button>
       </div>
 
+      {subscriptionIsLive === false && <SubscriptionExpiredNotice />}
       <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
         <button type="submit" className="owner-btn-save" disabled={submitting}>
-          {submitting ? "جاري الإرسال…" : "إرسال للمراجعة"}
+          {submitting ? "جاري الإضافة…" : "إضافة الملعب"}
         </button>
         <button type="button" className="owner-btn-cancel" onClick={() => setOpen(false)}>
           إلغاء

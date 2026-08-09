@@ -1,4 +1,4 @@
--- PadelTown — database schema, ported from PadelGo (PadelTown) project.
+-- PadelTown — database schema, originally ported from the PadelGo project.
 --
 -- For a fresh project, run in this exact order:
 --   1. schema.sql (this file)
@@ -8,8 +8,9 @@
 --   5. 004_multitenancy_security_fixes.sql
 --   6. 005_owner_subscriptions.sql (overrides some of this file's venues/courts
 --      policies and handle_new_user())
---   7. 006_trial_abuse_prevention.sql (overrides handle_new_user() again —
---      run it last)
+--   7. 006_trial_abuse_prevention.sql (overrides handle_new_user() again)
+--   8. 007_remove_owner_status.sql (drops profiles.owner_status, overrides
+--      handle_new_user() one more time — run it last)
 --
 -- Fixed vs. the raw "Schema Visualizer" export:
 --   - `ARRAY` is not a valid standalone type; changed to `text[]` (amenities, images)
